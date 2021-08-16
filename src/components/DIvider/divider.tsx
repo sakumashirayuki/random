@@ -9,7 +9,7 @@ type dividerType = 'soild' | 'dashed';
 type textOrientation = 'left' | 'center' | 'right';
 
 // 参数接口
-export interface DividerProps {
+export interface baseDividerProps {
   className?: string;
   plain?: boolean; // 文本是否为正文类型
   orientation?: textOrientation;
@@ -19,6 +19,9 @@ export interface DividerProps {
 
 // 类名前缀
 const classPrefix = 'random-divider';
+
+// Partial 将所有属性设为可选
+export type DividerProps = Partial<baseDividerProps>;
 
 export const Divider: FC<DividerProps> = (props) => {
   const { type, className, orientation, children, plain, style, ...restProps } =
