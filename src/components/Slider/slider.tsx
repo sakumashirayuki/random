@@ -1,7 +1,12 @@
-import React from 'react';
+import React, { CSSProperties } from 'react';
 
-export const Slider = () => {
-  return <input type="range" />;
+interface SliderProps {
+  style?: CSSProperties;
+}
+
+export const Slider = (props: SliderProps) => {
+  const { style } = props;
+  return <input type="range" style={style} />;
 };
 
 export default Slider;
