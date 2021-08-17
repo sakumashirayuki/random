@@ -3,6 +3,8 @@ import classNames from 'classnames';
 
 import TabsPane, { TabsPaneProps } from './tabsPane';
 
+type TabsSize = 'lg' | 'sm';
+
 const tabsNodeFilter = (children: any) => {
   return React.Children.map(
     children,
@@ -15,6 +17,7 @@ const tabsNodeFilter = (children: any) => {
 };
 
 interface BaseTabsProps {
+  size: TabsSize;
   className?: string;
   style?: CSSProperties;
 }
@@ -24,6 +27,8 @@ export type TabsProps = Partial<BaseTabsProps & HTMLAttributes<HTMLElement>>;
 interface TabsState {
   activeKey: string;
 }
+
+const classPrefix = 'random-tabs';
 
 export class Tabs extends React.Component<TabsProps, TabsState> {
   static TabsPane: typeof TabsPane;
@@ -38,25 +43,45 @@ export class Tabs extends React.Component<TabsProps, TabsState> {
   render() {
     return (
       <>
-        <div>
-          {tabsNodeFilter(this.props.children).map((e) => (
-            <button
-              onClick={() => this.setState({ activeKey: e.key as string })}
-            >
-              {e.props.tab}
-            </button>
-          ))}
-        </div>
-        <div className={this.props.className}>
-          {React.Children.map(tabsNodeFilter(this.props.children), (e) => (
-            <div hidden={(e.key as string) !== this.state.activeKey}>{e}</div>
-          ))}
-        </div>
-        <button
-          onClick={() => console.log(tabsNodeFilter(this.props.children))}
+        <div
+          className={classNames(`${classPrefix}`, this.props.className)}
+          style={this.props.style}
         >
-          test
-        </button>
+          <div
+            className={classNames(`${classPrefix}`, `${classPrefix}-${'menu'}`)}
+          >
+            {tabsNodeFilter(this.props.children).map((e) => (
+              <div
+                className={classNames(
+                  `${classPrefix}`,
+                  `${classPrefix}-menu-item`,
+                  (e.key as string) === this.state.activeKey ? `active` : ``,
+                  {
+                    [`${classPrefix}-menu-item-${this.props.size}`]:
+                      this.props.size,
+                  },
+                )}
+              >
+                <a
+                  onClick={() => this.setState({ activeKey: e.key as string })}
+                >
+                  {e.props.tab}
+                </a>
+              </div>
+            ))}
+          </div>
+          <div
+            className={classNames(
+              `${classPrefix}`,
+              `${classPrefix}-${'card'}`,
+              { [`${classPrefix}-card-${this.props.size}`]: this.props.size },
+            )}
+          >
+            {React.Children.map(tabsNodeFilter(this.props.children), (e) => (
+              <div hidden={(e.key as string) !== this.state.activeKey}>{e}</div>
+            ))}
+          </div>
+        </div>
       </>
     );
   }
