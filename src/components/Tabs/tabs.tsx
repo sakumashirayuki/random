@@ -41,7 +41,6 @@ export class Tabs extends React.Component<TabsProps, TabsState> {
     const keyList = tabsNodeFilter(this.props.children).map(
       (e) => e.key as string,
     );
-    console.log(keyList);
     const dKey = '.$' + (props.defaultKey ? props.defaultKey : '');
     this.state = {
       activeKey:
