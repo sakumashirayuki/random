@@ -27,7 +27,7 @@ export default () => (
       Now and them I have tested my seeing friends to discover what they see.
       Recently I was visited by a very good friends who hadjust returned from a
       long walk in the woods, and I asked her what she had observed.. "Nothing
-      in particular, " she replied.{' '}
+      in particular, " she replied.
     </p>
     <Divider type="dashed" />
     <p>
