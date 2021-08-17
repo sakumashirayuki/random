@@ -6,7 +6,7 @@ nav:
 
 ## Tabs
 
-### 基础使用:
+### 基础使用
 
 ```tsx
 import React from 'react';
@@ -31,7 +31,7 @@ export default () => (
 );
 ```
 
-### 不同大小:
+### 不同大小
 
 ```tsx
 import React from 'react';
