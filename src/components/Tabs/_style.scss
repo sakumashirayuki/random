@@ -27,7 +27,6 @@ $tabs-font-size-lg: 1.25rem !default;
     font-family: $font-family-base;
     font-weight: 400;
     line-height: 1.5;
-    text-align: center;
     background-image: none;
     .random-tabs-menu {
         border-bottom: 1px solid $tabs-border-color;
@@ -66,6 +65,16 @@ $tabs-font-size-lg: 1.25rem !default;
             margin-bottom: 0px;
             border-bottom: 2px solid $tabs-theme-color;
         }
+    }
+
+    .random-tabs-menu-right{
+        text-align: right;
+    }
+    .random-tabs-menu-left{
+        text-align: left;
+    }
+    .random-tabs-menu-center{
+        text-align: center;
     }
 
     .random-tabs-card {

@@ -4,6 +4,7 @@ import classNames from 'classnames';
 import TabsPane, { TabsPaneProps } from './tabsPane';
 
 type TabsSize = 'lg' | 'sm';
+type TabAlign = 'right' | 'center' | 'left';
 
 const tabsNodeFilter = (children: any) => {
   return React.Children.map(
@@ -17,7 +18,9 @@ const tabsNodeFilter = (children: any) => {
 };
 
 interface BaseTabsProps {
-  size: TabsSize;
+  size?: TabsSize;
+  defaultKey: string;
+  tabAlign?: TabAlign;
   className?: string;
   style?: CSSProperties;
 }
@@ -35,8 +38,16 @@ export class Tabs extends React.Component<TabsProps, TabsState> {
 
   constructor(props: TabsProps) {
     super(props);
+    const keyList = tabsNodeFilter(this.props.children).map(
+      (e) => e.key as string,
+    );
+    console.log(keyList);
+    const dKey = '.$' + (props.defaultKey ? props.defaultKey : '');
     this.state = {
-      activeKey: tabsNodeFilter(this.props.children)[0].key as string,
+      activeKey:
+        keyList.indexOf(dKey) === -1
+          ? (tabsNodeFilter(this.props.children)[0].key as string)
+          : dKey,
     };
   }
 
@@ -48,7 +59,14 @@ export class Tabs extends React.Component<TabsProps, TabsState> {
           style={this.props.style}
         >
           <div
-            className={classNames(`${classPrefix}`, `${classPrefix}-${'menu'}`)}
+            className={classNames(
+              `${classPrefix}`,
+              `${classPrefix}-${'menu'}`,
+              {
+                [`${classPrefix}-menu-${this.props.tabAlign}`]:
+                  this.props.tabAlign,
+              },
+            )}
           >
             {tabsNodeFilter(this.props.children).map((e) => (
               <div
