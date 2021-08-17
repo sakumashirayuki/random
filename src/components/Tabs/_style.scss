@@ -65,6 +65,10 @@ $tabs-font-size-lg: 1.25rem !default;
             margin-bottom: 0px;
             border-bottom: 2px solid $tabs-theme-color;
         }
+
+        > .disabled {
+            color: $tabs-border-color;
+        }
     }
 
     .random-tabs-menu-right{

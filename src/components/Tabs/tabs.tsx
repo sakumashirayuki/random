@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import TabsPane, { TabsPaneProps } from './tabsPane';
 
 type TabsSize = 'lg' | 'sm';
-type TabAlign = 'right' | 'center' | 'left';
+type TabsAlign = 'right' | 'center' | 'left';
 
 const tabsNodeFilter = (children: any) => {
   return React.Children.map(
@@ -20,7 +20,7 @@ const tabsNodeFilter = (children: any) => {
 interface BaseTabsProps {
   size?: TabsSize;
   defaultKey: string;
-  tabAlign?: TabAlign;
+  tabsAlign?: TabsAlign;
   className?: string;
   style?: CSSProperties;
 }
@@ -63,8 +63,8 @@ export class Tabs extends React.Component<TabsProps, TabsState> {
               `${classPrefix}`,
               `${classPrefix}-${'menu'}`,
               {
-                [`${classPrefix}-menu-${this.props.tabAlign}`]:
-                  this.props.tabAlign,
+                [`${classPrefix}-menu-${this.props.tabsAlign}`]:
+                  this.props.tabsAlign,
               },
             )}
           >
@@ -74,6 +74,7 @@ export class Tabs extends React.Component<TabsProps, TabsState> {
                   `${classPrefix}`,
                   `${classPrefix}-menu-item`,
                   (e.key as string) === this.state.activeKey ? `active` : ``,
+                  e.props.disabled ? `disabled` : ``,
                   {
                     [`${classPrefix}-menu-item-${this.props.size}`]:
                       this.props.size,
@@ -81,7 +82,11 @@ export class Tabs extends React.Component<TabsProps, TabsState> {
                 )}
               >
                 <a
-                  onClick={() => this.setState({ activeKey: e.key as string })}
+                  onClick={() =>
+                    e.props.disabled
+                      ? () => {}
+                      : this.setState({ activeKey: e.key as string })
+                  }
                 >
                   {e.props.tab}
                 </a>

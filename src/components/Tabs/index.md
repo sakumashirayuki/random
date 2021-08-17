@@ -6,7 +6,7 @@ nav:
 
 ## Tabs
 
-基础使用:
+### 基础使用:
 
 ```tsx
 import React from 'react';
@@ -31,7 +31,7 @@ export default () => (
 );
 ```
 
-不同大小:
+### 不同大小:
 
 ```tsx
 import React from 'react';
@@ -84,7 +84,7 @@ export default () => (
 );
 ```
 
-标签对齐
+### 标签对齐
 
 ```tsx
 import React from 'react';
@@ -134,7 +134,7 @@ export default () => (
 );
 ```
 
-自定义初始化 Key
+### 自定义初始化 Key
 
 ```tsx
 import React from 'react';
@@ -145,13 +145,38 @@ const { TabsPane } = Tabs;
 export default () => (
   <>
     <Tabs defaultKey="key2">
-      <TabsPane key="key1" tab="tab1" style={{ height: '100px' }}>
+      <TabsPane key="key1" tab="tab1">
         TabsPane 1
       </TabsPane>
-      <TabsPane key="key2" tab="tab2" style={{ height: '100px' }}>
+      <TabsPane key="key2" tab="tab2">
         TabsPane 2
       </TabsPane>
-      <TabsPane key="key3" tab="tab3" style={{ height: '100px' }}>
+      <TabsPane key="key3" tab="tab3">
+        TabsPane 3
+      </TabsPane>
+    </Tabs>
+  </>
+);
+```
+
+### Disabled
+
+```tsx
+import React from 'react';
+import { Tabs } from 'random';
+
+const { TabsPane } = Tabs;
+
+export default () => (
+  <>
+    <Tabs>
+      <TabsPane key="key1" tab="tab1">
+        TabsPane 1
+      </TabsPane>
+      <TabsPane disabled key="key2" tab="tab2">
+        TabsPane 2
+      </TabsPane>
+      <TabsPane key="key3" tab="tab3">
         TabsPane 3
       </TabsPane>
     </Tabs>
@@ -160,3 +185,19 @@ export default () => (
 ```
 
 ## API
+
+### Tabs
+
+| 属性       | 说明                | 类型                            | 默认值 |
+| ---------- | ------------------- | ------------------------------- | ------ |
+| defaultKey | 默认选择的 TabsPane | string                          |        |
+| size       | Tabs 的大小         | sm &#124; lg                    |        |
+| tabsAlign  | 菜单栏对齐          | left &#124; right &#124; center | right  |
+
+### Tabs.TabsPane
+
+| 属性     | 说明           | 类型    | 默认值 |
+| -------- | -------------- | ------- | ------ |
+| key      |                | string  |        |
+| tab      | 菜单项显示文本 | string  |        |
+| disabled | 菜单禁用       | boolean | false  |

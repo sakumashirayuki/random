@@ -3,6 +3,7 @@ import React, { FC, HTMLAttributes, CSSProperties } from 'react';
 interface BaseTabsPaneProps {
   key: string;
   tab: string;
+  disabled: boolean;
   className?: string;
   style?: CSSProperties;
 }
