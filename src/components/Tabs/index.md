@@ -95,7 +95,7 @@ const { TabsPane } = Tabs;
 export default () => (
   <>
     <h4>Left</h4>
-    <Tabs tabAlign="left">
+    <Tabs tabsAlign="left">
       <TabsPane key="key1" tab="tab1">
         TabsPane 1
       </TabsPane>
@@ -107,7 +107,7 @@ export default () => (
       </TabsPane>
     </Tabs>
     <h4>Center</h4>
-    <Tabs tabAlign="center">
+    <Tabs tabsAlign="center">
       <TabsPane key="key1" tab="tab1">
         TabsPane 1
       </TabsPane>
@@ -119,7 +119,7 @@ export default () => (
       </TabsPane>
     </Tabs>
     <h4>Right</h4>
-    <Tabs tabAlign="right">
+    <Tabs tabsAlign="right">
       <TabsPane key="key1" tab="tab1">
         TabsPane 1
       </TabsPane>
