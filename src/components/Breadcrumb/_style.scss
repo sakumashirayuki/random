@@ -1,0 +1,69 @@
+//不同大小按钮的
+$breadcrumb-link-color: #00000085!default;
+$breadcrumb-link-disabled: #8f8f8f57!default;
+$breadcrumb-link-hover: #40a9ff!default;
+$breadcrumb-link-now: #2d3436 !default;
+$breadcrumb-link-size: 1rem !default;
+$breadcrumb-lineHeight: 2rem!default;
+$breadcrumb-border-size: 0.75px !default;
+$breadcrumb-border-color: #e3e3e4 !default;
+$breadcrumb-separator-color: #636e7262 !default;
+
+.random-breadcrumb {
+
+    user-select: none;
+    -ms-user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    ul{ padding-left: 12px;}
+
+    .random-breadcrumb-item{
+        display: inline-block;
+    }
+    .random-breadcrumb-title{
+        text-decoration: none;
+        cursor: pointer;
+        transition: color .3s ease-in-out;
+        list-style: none;
+        color: $breadcrumb-link-color;
+        font-size: $breadcrumb-link-size;
+        line-height: $breadcrumb-lineHeight;
+        font-weight: 500;
+        &:hover{
+            color: $breadcrumb-link-hover;
+        }
+    }
+
+    .random-breadcrumb-item-disabled{
+        .random-breadcrumb-title{
+            pointer-events: none;
+            cursor: default;
+            color: $breadcrumb-link-disabled;
+        }
+    }
+
+    .random-breadcrumb-separator{
+        display: inline-block;
+        padding: 0px 12px;
+        color: $breadcrumb-separator-color;
+    }
+
+    .random-breadcrumb-item-now{
+        .random-breadcrumb-title{
+            color: $breadcrumb-link-now;
+            &:hover{
+                color: $breadcrumb-link-hover;
+            }
+        }
+    }
+}
+
+.random-breadcrumb-border{
+    border-bottom: $breadcrumb-border-size solid $breadcrumb-border-color;
+}

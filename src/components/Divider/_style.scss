@@ -1,0 +1,66 @@
+//不同大小按钮的 padding 和 font size
+$divider-untext-margin: 1.4rem 0!default;
+$divider-text-margin: 1.8rem 0!default;
+$divider-padding: 0 1rem!default;
+$divider-font-size: 1rem !default;
+$divider-font-color: #000000d9;
+$divider-border-size: 0.75px !default;
+$divider-border-color: #e3e3e4 !default;
+
+$divider-title-color: #40484b !default;
+$divider-title-size: 1rem !default;
+$divider-title-padding: 0.5rem !default;
+
+$divider-text-color: #545e61 !default;
+$divider-text-size: 0.9rem !default;
+
+.random-divider {
+    box-sizing: border-box;
+    position: relative;
+    color: $divider-font-color;
+    display: flex;
+    align-items: center;
+    margin: $divider-untext-margin;
+    height: 1px;
+    font-size: $divider-font-size;
+    padding: $divider-padding;
+}
+.random-divider-text{
+    margin: $divider-text-margin;
+}
+
+.random-divider-soild {
+    border-bottom: $divider-border-size solid $divider-border-color;
+}
+
+.random-divider-dashed {
+    border-bottom: $divider-border-size dashed $divider-border-color;
+}
+
+.random-divider-left{
+    justify-content: flex-start;
+}
+.random-divider-center{
+    justify-content: center;
+}
+.random-divider-right{
+    justify-content: flex-end;
+}
+
+.random-divider-plain{
+    .random-divider-inner-text{
+        font-weight: 500;
+        color: $divider-text-color;
+        font-size: $divider-text-size;
+    }
+}
+
+.random-divider-inner-text{
+    display: inline-block;
+    position: absolute;
+    padding: 2px $divider-title-padding;
+    color: $divider-title-color;
+    font-size: $divider-title-size;
+    font-weight: bold;
+    background: #FFF;
+}
