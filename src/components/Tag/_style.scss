@@ -1,0 +1,59 @@
+$tag-border-radius: 0.125rem !default;
+$tag-padding-y: 0.25rem !default;
+$tag-text-padding-x: 0.5rem !default;
+$tag-icon-padding-x: 0.25rem !default;
+$tag-font-size: 1rem !default;
+$tag-icon-width: 19px !default;
+$tag-alpha: 0.1 !default;
+
+
+.random-tag{
+    
+    border: 1px solid black;
+    background-color: rgba($color: black, $alpha: $tag-alpha);
+    border-radius: $tag-border-radius;
+    display: inline-block;
+    > .random-tag-span{
+        @include tag-boxing($tag-padding-y, $tag-text-padding-x, $tag-font-size);
+    }
+    > .random-tag-icon{
+        vertical-align: middle;
+        padding-right: $tag-icon-padding-x;
+        padding-top: $tag-padding-y;
+        padding-bottom: $tag-padding-y;
+        width: $tag-icon-width;
+    }
+}
+
+.random-tag-blue{
+    @include tag-color($blue, $tag-alpha);
+}
+
+.random-tag-indigo{
+    @include tag-color($indigo, $tag-alpha);
+}
+.random-tag-purple{
+    @include tag-color($purple, $tag-alpha);
+}
+.random-tag-pink{
+    @include tag-color($pink, $tag-alpha);
+}
+.random-tag-red{
+    @include tag-color($red, $tag-alpha);
+}
+.random-tag-orange{
+    @include tag-color($orange, $tag-alpha);
+}
+.random-tag-yellow{
+    @include tag-color($yellow, $tag-alpha);
+}
+.random-tag-green{
+    @include tag-color($green, $tag-alpha);
+}
+
+.random-tag-teal{
+    @include tag-color($teal, $tag-alpha);
+}
+.random-tag-cyan{
+    @include tag-color($cyan, $tag-alpha);
+}

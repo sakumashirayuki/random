@@ -45,17 +45,27 @@ const Tag: FC<TagProps> = (props) => {
   };
   return (
     <>
-      <div
-        hidden={hidden}
-        className={classNames(className)}
-        style={style}
-        {...rest}
-      >
-        <div>{children}</div>
-        <div onClick={tagClose}>
-          <IconClose />
+      <span hidden={hidden}>
+        <div
+          className={classNames(className, `${classPrefix}`, {
+            [`${classPrefix}-${color}`]: color,
+          })}
+          style={style}
+          {...rest}
+        >
+          <span className={classNames(`${classPrefix}-span`)}>{children}</span>
+          {closable ? (
+            <span
+              className={classNames(`${classPrefix}-icon`)}
+              onClick={tagClose}
+            >
+              <IconClose />
+            </span>
+          ) : (
+            ''
+          )}
         </div>
-      </div>
+      </span>
     </>
   );
 };
