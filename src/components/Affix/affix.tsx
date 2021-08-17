@@ -1,5 +1,4 @@
 import React, { createRef, FC, ReactNode, useEffect } from 'react';
-import { CSSProperties } from 'styled-components';
 
 export interface AffixProps {
   offsetTop?: number;
@@ -10,12 +9,6 @@ export interface AffixProps {
 
 export const Affix: FC<AffixProps> = (props) => {
   const { offsetTop, offsetBottom, classNames, children } = props;
-  //   const oldStyles: Pick<CSSProperties, 'position' | 'top' | 'bottom' | 'width'> = {
-  //     position: 'static',
-  //     top: '',
-  //     bottom: '',
-  //     width: '',
-  //   };
   const oldStyles: {
     position: string;
     top: string;
@@ -40,10 +33,8 @@ export const Affix: FC<AffixProps> = (props) => {
       typeof width === 'undefined'
     )
       return;
+    const scrollTop = window.scrollY;
     if (offsetTop !== undefined) {
-      const scrollTop = window.scrollY;
-      console.log('affix top', distanceToTop);
-      console.log('window scrollY', scrollTop);
       if (distanceToTop - scrollTop < offsetTop) {
         if (element.current && element.current.style.position !== 'fixed') {
           oldStyles.position = element.current.style.position;
@@ -57,7 +48,6 @@ export const Affix: FC<AffixProps> = (props) => {
         }
       } else {
         // reset style
-        console.log('reset');
         if (element.current) {
           element.current.style.position = oldStyles.position;
           element.current.style.top = oldStyles.top;
@@ -67,8 +57,13 @@ export const Affix: FC<AffixProps> = (props) => {
       }
     }
     if (offsetBottom !== undefined) {
-      if (distanceToBottom <= offsetBottom) {
+      const currentTop = element.current
+        ? window.scrollY + element.current.getBoundingClientRect().top
+        : window.scrollY;
+      if (distanceToBottom <= offsetBottom && currentTop <= distanceToTop) {
         if (element.current && element.current.style.position !== 'fixed') {
+          console.log('distanceBottom', distanceToBottom);
+          console.log('keep fixed');
           oldStyles.position = element.current.style.position;
           oldStyles.top = element.current.style.top;
           oldStyles.bottom = element.current.style.bottom;
@@ -96,22 +91,15 @@ export const Affix: FC<AffixProps> = (props) => {
     if (typeof window.scrollY === 'undefined')
       // don't work in ie
       return;
+    // element.current.getBoundingClientRect().top is the viewport distance
     const distanceToTop = element.current
       ? window.scrollY + element.current.getBoundingClientRect().top
       : undefined;
 
     const handleScrollAndResize = () => {
-      // const distanceToBottom = element.current
-      // ? document.documentElement.clientHeight +
-      //   window.scrollY -
-      //   element.current.getBoundingClientRect().bottom
-      // : undefined;
       const distanceToBottom = element.current
-        ? window.innerHeight +
-          window.scrollY -
-          element.current.getBoundingClientRect().bottom
+        ? window.innerHeight - element.current.getBoundingClientRect().bottom
         : undefined;
-      // console.log("height", document.documentElement.clientHeight);
       checkPosition(
         distanceToTop,
         distanceToBottom,
