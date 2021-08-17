@@ -40,49 +40,41 @@ export const Breadcrumb: FC<breadcrumbProps> = (props) => {
     [`${classPrefix}-border`]: border,
   });
 
-  if (lib !== undefined) {
-    return (
-      <div className={classes} style={style} {...restProps}>
-        <ul>
-          {lib?.map((item: breadcrumbItem, index: number) => {
-            return (
-              <li
-                key={`${classPrefix}-${index}`}
-                className={classNames(`${classPrefix}-item`, {
-                  [`${classPrefix}-item-link`]: item.href,
-                  [`${classPrefix}-item-disabled`]: item.disabled,
-                  [`${classPrefix}-item-now`]: index === lib.length - 1,
-                })}
-              >
-                {item.href ? (
-                  <a className={`${classPrefix}-title`} href={item.href}>
-                    {item.title}
-                  </a>
-                ) : (
-                  <span
-                    className={`${classPrefix}-title`}
-                    onClick={!item.disabled ? item.click : () => false}
-                  >
-                    {item.title}
-                  </span>
-                )}
-                {index !== lib.length - 1 ? (
-                  <span className={`${classPrefix}-separator`}>
-                    {separator}
-                  </span>
-                ) : (
-                  ''
-                )}
-              </li>
-            );
-          })}
-        </ul>
-      </div>
-    );
-  } else {
-    console.error('lib 为必须传的参数!');
-    return <></>;
-  }
+  return (
+    <div className={classes} style={style} {...restProps}>
+      <ul>
+        {lib?.map((item: breadcrumbItem, index: number) => {
+          const itemClasses = classNames(`${classPrefix}-item`, {
+            [`${classPrefix}-item-link`]: item.href,
+            [`${classPrefix}-item-disabled`]: item.disabled,
+            [`${classPrefix}-item-now`]: index === lib.length - 1,
+          });
+
+          return (
+            <li key={`${classPrefix}-${index}`} className={itemClasses}>
+              {item.href ? (
+                <a className={`${classPrefix}-title`} href={item.href}>
+                  {item.title}
+                </a>
+              ) : (
+                <span
+                  className={`${classPrefix}-title`}
+                  onClick={!item.disabled ? item.click : () => false}
+                >
+                  {item.title}
+                </span>
+              )}
+              {index !== lib.length - 1 ? (
+                <span className={`${classPrefix}-separator`}>{separator}</span>
+              ) : (
+                ''
+              )}
+            </li>
+          );
+        })}
+      </ul>
+    </div>
+  );
 };
 
 // 设置 props限制
