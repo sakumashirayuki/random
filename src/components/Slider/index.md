@@ -12,7 +12,7 @@ import { Slider } from 'random';
 
 export default () => (
   <>
-    <Slider style={{ width: '500px' }} />
+    <Slider />
   </>
 );
 ```
