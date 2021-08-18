@@ -41,19 +41,22 @@
   font-size: $font-size;
 }
 
-@mixin tabs-card-boxing ($padding-y, $padding-x, $font-size){
+@mixin tabs-card-boxing($padding-y, $padding-x, $font-size) {
   padding: $padding-y $padding-x;
   font-size: $font-size;
 }
 
-@mixin tag-boxing ($padding-y, $padding-x, $font-size){
+@mixin tag-boxing($padding-y, $padding-x, $font-size) {
   padding: $padding-y $padding-x;
   font-size: $font-size;
 }
 
-@mixin tag-color ($color, $alpha){
+@mixin tag-color($color, $alpha) {
   border-color: $color;
-    background-color: rgba($color: $color, $alpha: $tag-alpha);
+  background-color: rgba($color: $color, $alpha: $tag-alpha);
+  color: $color;
+  > .random-tag-span > a{
     color: $color;
+    text-decoration: none;
+  }
 }
-

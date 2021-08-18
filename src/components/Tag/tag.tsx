@@ -13,6 +13,7 @@ interface BaseTagProps {
   color: string;
   visible: boolean;
   onClose: (e: any) => void;
+  preventDefaultClose: boolean;
   style?: CSSProperties;
   className?: string;
 }
@@ -27,37 +28,47 @@ export type TagProps = Partial<NativeTagProps & AnchorTagProps>;
 
 const Tag: FC<TagProps> = (props) => {
   const {
+    onClick,
     closable,
     color,
     visible,
     onClose,
     style,
     className,
+    preventDefaultClose,
     children,
     ...rest
   } = props;
+
   const [hidden, setHidden] = useState<boolean>(
     !(visible || visible === undefined),
   );
-  const tagClose = () => {
-    setHidden(true);
+
+  const tagClose = (prevent: boolean | undefined) => {
+    if (prevent === undefined || !prevent) setHidden(true);
     if (onClose) onClose(children);
   };
+
+  const mainClass = color?.startsWith('#')
+    ? classNames(className, `${classPrefix}`)
+    : classNames(className, `${classPrefix}`, {
+        [`${classPrefix}-${color}`]: color,
+      });
+
+  const newStyle = color?.startsWith('#')
+    ? { backgroundColor: color, borderColor: color, color: '#fff', ...style }
+    : style;
   return (
     <>
       <span hidden={hidden}>
-        <div
-          className={classNames(className, `${classPrefix}`, {
-            [`${classPrefix}-${color}`]: color,
-          })}
-          style={style}
-          {...rest}
-        >
-          <span className={classNames(`${classPrefix}-span`)}>{children}</span>
+        <div className={mainClass} style={newStyle} {...rest}>
+          <span onClick={onClick} className={classNames(`${classPrefix}-span`)}>
+            {children}
+          </span>
           {closable ? (
             <span
               className={classNames(`${classPrefix}-icon`)}
-              onClick={tagClose}
+              onClick={() => tagClose(preventDefaultClose)}
             >
               <IconClose />
             </span>

@@ -1,27 +1,34 @@
-$tag-border-radius: 0.125rem !default;
+$tag-border-radius: 0.25rem !default;
 $tag-padding-y: 0.25rem !default;
+$tag-margin-y: 0.25rem !default;
+$tag-margin-x: 0.25rem !default;
 $tag-text-padding-x: 0.5rem !default;
 $tag-icon-padding-x: 0.25rem !default;
 $tag-font-size: 1rem !default;
-$tag-icon-width: 19px !default;
-$tag-alpha: 0.1 !default;
+$tag-font-weight: 400 !default;
+$tag-alpha: 0.05 !default;
 
 
 .random-tag{
-    
-    border: 1px solid black;
-    background-color: rgba($color: black, $alpha: $tag-alpha);
+    @include tag-color($black, $tag-alpha);
+    border: 1px solid;
     border-radius: $tag-border-radius;
+    font-weight: $tag-font-weight;
     display: inline-block;
+    margin-right: $tag-margin-x;
+    margin-bottom: $tag-margin-y;
     > .random-tag-span{
+        display: inline-block;
         @include tag-boxing($tag-padding-y, $tag-text-padding-x, $tag-font-size);
     }
     > .random-tag-icon{
+        cursor: pointer;
+        display: inline-block;
         vertical-align: middle;
         padding-right: $tag-icon-padding-x;
-        padding-top: $tag-padding-y;
-        padding-bottom: $tag-padding-y;
-        width: $tag-icon-width;
+        padding-top: auto;
+        padding-bottom: auto;
+        
     }
 }
 
@@ -56,4 +63,20 @@ $tag-alpha: 0.1 !default;
 }
 .random-tag-cyan{
     @include tag-color($cyan, $tag-alpha);
+}
+
+.random-tag-success{
+    @include tag-color($success, $tag-alpha);
+}
+
+.random-tag-pending{
+    @include tag-color($info, $tag-alpha);
+}
+
+.random-tag-error{
+    @include tag-color($danger, $tag-alpha);
+}
+
+.random-tag-warning{
+    @include tag-color($warning, $tag-alpha);
 }
