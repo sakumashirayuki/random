@@ -61,7 +61,7 @@ export default () => (
 
 ### label
 
-带有标签的两侧 timeline，组件默认居中
+带有标签的两侧 timeline，组件默认居中，任意 Item 具有 label 属性即可切换为该样式
 
 ```tsx
 import React from 'react';
@@ -178,11 +178,10 @@ export default () => (
 
 ### Timeline.Item
 
-| 属性                | 说明             | 类型        | 默认值 |
-| ------------------- | ---------------- | ----------- | ------ |
-| color               | 预设值或颜色     | string      | -      |
-| title               | 标题             | string      | -      |
-| onClose             | 关闭时回调       | (e) => void | -      |
-| onClick             | 单击触发的事件   | (e) => void | -      |
-| preventDefaultClose | 移除默认关闭事件 | boolean     | false  |
-| visible             | 是否可见         | boolean     | true   |
+| 属性    | 说明               | 类型        | 默认值 |
+| ------- | ------------------ | ----------- | ------ |
+| color   | 预设值或颜色       | string      | -      |
+| label   | 标签               | string      | -      |
+| noTail  | 是否带有中线       | boolean     | -      |
+| title   | 标题               | string      | -      |
+| onClick | 单击圆点触发的事件 | (e) => void | -      |
