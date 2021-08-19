@@ -6,6 +6,8 @@ nav:
 
 ## Affix
 
+将页面元素钉在可视范围。
+
 ```tsx
 import React from 'react';
 import { Affix, Button } from 'random';
