@@ -79,16 +79,13 @@ export class Tabs extends React.Component<TabsProps, TabsState> {
                       this.props.size,
                   },
                 )}
+                onClick={() =>
+                  e.props.disabled
+                    ? () => {}
+                    : this.setState({ activeKey: e.key as string })
+                }
               >
-                <a
-                  onClick={() =>
-                    e.props.disabled
-                      ? () => {}
-                      : this.setState({ activeKey: e.key as string })
-                  }
-                >
-                  {e.props.tab}
-                </a>
+                <a>{e.props.tab}</a>
               </div>
             ))}
           </div>
