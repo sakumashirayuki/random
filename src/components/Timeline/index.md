@@ -182,6 +182,6 @@ export default () => (
 | ------- | ------------------ | ----------- | ------ |
 | color   | 预设值或颜色       | string      | -      |
 | label   | 标签               | string      | -      |
-| noTail  | 是否带有中线       | boolean     | -      |
+| noTail  | 是否省略中线       | boolean     | false  |
 | title   | 标题               | string      | -      |
 | onClick | 单击圆点触发的事件 | (e) => void | -      |
