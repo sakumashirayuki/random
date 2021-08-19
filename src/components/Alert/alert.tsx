@@ -1,6 +1,6 @@
 import React, { CSSProperties, MouseEvent, FC, useState } from 'react';
 import classnames from 'classnames';
-// import propTypes from "prop-types";
+import propTypes from 'prop-types';
 import CSSMotion from 'rc-motion';
 
 // icon 图标
@@ -35,7 +35,7 @@ interface baseAlertProps {
   // 是否开启图标ico
   showIcon?: boolean;
   // 自定义关闭图标
-  icon?: React.ReactNode;
+  icon?: React.ReactNode | string;
   // alert关闭时回调
   onClose?: (e: MouseEvent) => void;
 
@@ -90,8 +90,6 @@ const Alert: FC<alertProps> = (props) => {
     ...restProps
   } = props;
 
-  // const alertRef = useRef(null);
-
   // 合并类名
   const classes = classnames(`${classPrefix}`, className, {
     [`${classPrefix}-${type}`]: type,
@@ -104,7 +102,6 @@ const Alert: FC<alertProps> = (props) => {
 
   const handleClose = (e: MouseEvent<HTMLButtonElement>) => {
     setClosed(true);
-    console.log(closed);
     onClose?.(e);
   };
 
@@ -168,6 +165,13 @@ Alert.defaultProps = {
   showIcon: false,
   closable: false,
   closeText: close_icon,
+};
+
+Alert.propTypes = {
+  description: propTypes.string,
+  message: propTypes.string,
+  showIcon: propTypes.bool,
+  closable: propTypes.bool,
 };
 
 export default Alert;

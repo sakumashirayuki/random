@@ -24,7 +24,7 @@ interface clickFn {
 // 参数接口
 export interface baseBreadcrumbProps {
   className?: string;
-  separator?: React.Component | string; // 分隔符
+  separator?: React.ReactNode | string; // 分隔符
   lib: breadcrumbItem[]; // 路由数组
   border?: boolean; // 底边框
   style?: CSSProperties;
@@ -104,6 +104,7 @@ Breadcrumb.defaultProps = {
 };
 Breadcrumb.propTypes = {
   lib: PropTypes.array.isRequired,
+  border: PropTypes.bool,
 };
 
 export default Breadcrumb;

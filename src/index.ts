@@ -7,3 +7,4 @@ export { default as Divider } from './components/Divider';
 export { default as Breadcrumb } from './components/Breadcrumb';
 export { default as Input } from './components/Input';
 export { default as Alert } from './components/Alert';
+export { default as Switch } from './components/Switch';

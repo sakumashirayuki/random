@@ -7,6 +7,7 @@ import React, {
   MouseEvent,
 } from 'react';
 import classnames from 'classnames';
+import PropTypes from 'prop-types';
 
 // 大小类型
 export type SizeType = 'default' | 'lg' | 'sm';
@@ -117,14 +118,19 @@ export const Input: FC<NativeInputProps> = (props) => {
 
   // 按钮点击回调
   const onSearch = (e: MouseEvent<HTMLElement>) => {
-    if (onPressEnter && inputRef.current !== null) {
+    if (onPressEnter && inputRef.current !== null && !disabled) {
       onPressEnter(inputRef.current.value, e);
     }
   };
 
   // 点击回车回调
   const onEnter = (e: KeyboardEvent<HTMLInputElement>) => {
-    if (onPressEnter && inputRef.current !== null && e.keyCode === 13) {
+    if (
+      onPressEnter &&
+      inputRef.current !== null &&
+      e.keyCode === 13 &&
+      !disabled
+    ) {
       onPressEnter(inputRef.current.value, e);
     }
   };
@@ -133,7 +139,12 @@ export const Input: FC<NativeInputProps> = (props) => {
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
-    if (type === 'textarea' && onChange && textareaRef.current !== null) {
+    if (
+      type === 'textarea' &&
+      onChange &&
+      textareaRef.current !== null &&
+      !disabled
+    ) {
       onChange(textareaRef.current.value, e);
     } else if (onChange && inputRef.current !== null) {
       onChange(inputRef.current.value, e);
@@ -194,6 +205,18 @@ Input.defaultProps = {
   inpSize: 'default',
   border: true,
   disabled: false,
+};
+
+Input.propTypes = {
+  value: PropTypes.string,
+  border: PropTypes.bool,
+  maxLength: PropTypes.number,
+  rows: PropTypes.number,
+  addonSubmit: PropTypes.string,
+  disabled: PropTypes.bool,
+  placeholder: PropTypes.string,
+  onChange: PropTypes.func,
+  onPressEnter: PropTypes.func,
 };
 
 export default Input;

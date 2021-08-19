@@ -53,6 +53,7 @@ $input-textrea-minHeight: 32px;
     flex-wrap: nowrap;
 
     .random-input-disabled{
+        cursor: no-drop;
         background-color: $input-disabled-backgroundColor;
         color: $input-disabled-color;
         &:hover{
@@ -184,6 +185,7 @@ textarea.random-input{
 }
 .random-input-submit-disabled{
     button{
+        cursor: no-drop;
         border: 1px solid nth($input-submit-disabled-color, 2)!important;
         background-color: nth($input-submit-disabled-color, 1)!important;
         color: nth($input-submit-disabled-color, 3)!important;

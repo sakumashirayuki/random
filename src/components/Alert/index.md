@@ -157,7 +157,7 @@ export default () => (
 | 属性        | 说明               | 类型                                                    | 默认值    |
 | ----------- | ------------------ | ------------------------------------------------------- | --------- |
 | type        | 设置警告的类型     | `success` &#124; `info` &#124; `error` &#124; `warning` | `success` |
-| size        | 设置警告的大小     | `default` &#124; `lg` &#124; `sm` lg                    | `default` |
+| size        | 设置警告的大小     | `default` &#124; `lg` &#124; `sm`                       | `default` |
 | message     | 设置警告提示内容   | <font color=#d35400>String</font>                       | -         |
 | description | 设置警告辅助文本   | <font color=#d35400>String</font>                       | -         |
 | closable    | 是否开启关闭按钮   | <font color=#d35400>Boolean</font>                      | `false`   |
