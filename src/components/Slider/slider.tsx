@@ -1,60 +1,64 @@
 import classNames from 'classnames';
-import React, { createRef, useEffect, useState } from 'react';
-import { percentToString, stepConvert } from './utils';
+import React, { createRef, FC, useEffect, useState } from 'react';
+import {
+  lengthToValue,
+  percentToString,
+  stepConvert,
+  valueToLength,
+} from './utils';
 
 interface SliderProps {
   className: string;
   step: number;
   value: number;
   onChange?: (value: number) => void;
+  min: number;
+  max: number;
 }
 
 // 类名前缀
 const classPrefix = 'random-slider';
 
-export const Slider = (props: SliderProps) => {
-  const { className, step = 1, value = 50, onChange } = props;
+export const Slider: FC<SliderProps> = (props: SliderProps) => {
+  const {
+    className,
+    step = 1,
+    value = 50,
+    onChange,
+    min = 0,
+    max = 100,
+  } = props;
   const rail = createRef<HTMLDivElement>();
   const [railRect, setRailRect] = useState({
     width: 0,
     left: 0,
   });
-  const [trackLength, setTrackLength] = useState(value);
+  const [trackValue, setTrackValue] = useState(value);
+  const [trackLength, setTrackLength] = useState(
+    valueToLength(value, min, max, step),
+  );
 
   const onMouseDown = () => {
-    window.addEventListener('mousemove', onMouseMove);
+    window.addEventListener('mousemove', onChangeLength);
     window.addEventListener('mouseup', onMouseUp);
   };
 
-  const onMouseMove = (e: any) => {
+  const onChangeLength = (e: any) => {
     const mouseX = e.clientX; // mouse position
     if (
       railRect.width &&
       mouseX >= railRect.left &&
       mouseX <= railRect.width + railRect.left
     ) {
-      const convertedLength = stepConvert(
-        ((mouseX - railRect.left) / railRect.width) * 100,
-        step,
-      );
-      setTrackLength(convertedLength);
+      const currentLength = ((mouseX - railRect.left) / railRect.width) * 100;
+      setTrackLength(currentLength);
+      setTrackValue(stepConvert(lengthToValue(currentLength, min, max), step));
     }
   };
 
   const onMouseUp = () => {
-    window.removeEventListener('mousemove', onMouseMove);
+    window.removeEventListener('mousemove', onChangeLength);
     window.removeEventListener('mouseup', onMouseUp);
-  };
-
-  const handleOnClickTrack = (e: any) => {
-    const mouseX = e.clientX; // mouse position
-    if (railRect.width) {
-      const convertedLength = stepConvert(
-        ((mouseX - railRect.left) / railRect.width) * 100,
-        step,
-      );
-      setTrackLength(convertedLength);
-    }
   };
 
   useEffect(() => {
@@ -66,15 +70,15 @@ export const Slider = (props: SliderProps) => {
 
   useEffect(() => {
     if (onChange) {
-      onChange(trackLength);
+      onChange(trackValue);
     }
-  }, [trackLength]);
+  }, [trackValue]);
 
   // 合并类名
   const classes = classNames(`${classPrefix}`, className);
 
   return (
-    <div className={classes} onClick={handleOnClickTrack}>
+    <div className={classes} onClick={onChangeLength}>
       <div className={`${classPrefix}-rail`} ref={rail} />
       <div
         className={`${classPrefix}-track`}

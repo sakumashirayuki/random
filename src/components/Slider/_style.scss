@@ -1,3 +1,5 @@
+@use "sass:math";
+
 $slider-padding: 1rem 0!default;
 $slider-rail-height: 4px!default;
 $slider-handle-size: 16px !default;
@@ -32,7 +34,7 @@ $slider-track-light-blue: #389fff!default;
     border: solid $slider-handle-border-size $slider-track-light-blue;
     border-radius: 50%;
     background-color: #fff;
-    margin-top: -(($slider-handle-size / 2) - ($slider-rail-height / 2));
+    margin-top: -(math.div($slider-handle-size, 2) - math.div($slider-rail-height, 2));
     cursor: grab;
   }
 
