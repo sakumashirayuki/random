@@ -1,4 +1,9 @@
-import React, { FC, CSSProperties } from 'react';
+import React, {
+  FC,
+  CSSProperties,
+  LiHTMLAttributes,
+  AnchorHTMLAttributes,
+} from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 
@@ -13,20 +18,26 @@ type breadcrumbItem = {
 };
 
 interface clickFn {
-  (): void;
+  (e: React.MouseEvent): void;
 }
 
 // 参数接口
 export interface baseBreadcrumbProps {
   className?: string;
-  separator?: React.Component | string; // 分隔符
+  separator?: React.ReactNode | string; // 分隔符
   lib: breadcrumbItem[]; // 路由数组
   border?: boolean; // 底边框
   style?: CSSProperties;
 }
 
+type NativeBreadcrumbProps = baseBreadcrumbProps &
+  LiHTMLAttributes<HTMLElement>;
+type AnchorBreadcrumbProps = breadcrumbItem & AnchorHTMLAttributes<HTMLElement>;
+
 // Partial 将所有属性设为可选
-export type breadcrumbProps = Partial<baseBreadcrumbProps>;
+export type breadcrumbProps = Partial<
+  NativeBreadcrumbProps & AnchorBreadcrumbProps
+>;
 
 // 类名前缀
 const classPrefix = 'random-breadcrumb';
@@ -52,6 +63,7 @@ export const Breadcrumb: FC<breadcrumbProps> = (props) => {
 
           return (
             <li key={`${classPrefix}-${index}`} className={itemClasses}>
+              {/* 判断给定标签 */}
               {item.href ? (
                 <a className={`${classPrefix}-title`} href={item.href}>
                   {item.title}
@@ -59,7 +71,15 @@ export const Breadcrumb: FC<breadcrumbProps> = (props) => {
               ) : (
                 <span
                   className={`${classPrefix}-title`}
-                  onClick={!item.disabled ? item.click : () => false}
+                  onClick={
+                    !item.disabled
+                      ? (e: React.MouseEvent<HTMLElement, MouseEvent>) => {
+                          if (item.click) {
+                            item.click(e);
+                          }
+                        }
+                      : () => false
+                  }
                 >
                   {item.title}
                 </span>
@@ -84,6 +104,7 @@ Breadcrumb.defaultProps = {
 };
 Breadcrumb.propTypes = {
   lib: PropTypes.array.isRequired,
+  border: PropTypes.bool,
 };
 
 export default Breadcrumb;

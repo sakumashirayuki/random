@@ -43,7 +43,6 @@ $breadcrumb-separator-color: #636e7262 !default;
     .random-breadcrumb-item-disabled{
         .random-breadcrumb-title{
             pointer-events: none;
-            cursor: default;
             color: $breadcrumb-link-disabled;
         }
     }
