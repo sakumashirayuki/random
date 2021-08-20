@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import React, { createRef, useEffect, useState } from 'react';
-import { stepConvert } from './utils';
+import { percentToString, stepConvert } from './utils';
 
 interface SliderProps {
   className: string;
@@ -44,8 +44,13 @@ export const Slider = (props: SliderProps) => {
     window.removeEventListener('mouseup', onMouseUp);
   };
 
-  const percentToString = (percent: number) => {
-    return percent.toFixed(2) + '%';
+  const handleOnClickTrack = (e: any) => {
+    const mouseX = e.clientX; // mouse position
+    if (railRect.width) {
+      setTrackLength(
+        stepConvert(((mouseX - railRect.left) / railRect.width) * 100, step),
+      );
+    }
   };
 
   useEffect(() => {
@@ -66,10 +71,15 @@ export const Slider = (props: SliderProps) => {
 
   return (
     <div className={classes}>
-      <div className={`${classPrefix}-rail`} ref={rail} />
+      <div
+        className={`${classPrefix}-rail`}
+        ref={rail}
+        onClick={handleOnClickTrack}
+      />
       <div
         className={`${classPrefix}-track`}
         style={{ width: percentToString(trackLength) }}
+        onClick={handleOnClickTrack}
       />
       <div
         className={`${classPrefix}-handle`}
