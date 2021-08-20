@@ -1,0 +1,193 @@
+// 默认样式
+$input-font-color: #000000d9 !default;
+$input-line-height: 1.575 !default;
+$input-backgroundColor: #FFFFFF !default;
+$input-border-color: #d9d9d9 !default;
+// hover样式
+$input-hover-border-color: #40a9ff !default;
+
+// sm 尺寸
+$input-sm-font-size: 13px !default;
+$input-sm-padding: 2px 7px !default;
+// default尺寸
+$input-default-font-size: 14px !default;
+$input-default-padding: 4px 11px !default;
+// lg尺寸
+$input-lg-font-size: 16px !default;
+$input-lg-padding: 6.5px 11px !default;
+// disabled样式
+$input-disabled-backgroundColor: #dfdbdb9a !default;
+$input-disabled-border-color: #d13a3a81 !default;
+$input-disabled-color: #3f3f3f59 !default;
+// 前/后缀标签样式
+$input-addon-border-color: #d9d9d9 !default;
+$input-addon-backgroundColor: #f3f3f3 !default;
+
+// 确认按钮样式
+$input-submit-color: #1890ff #1890ff #ffffff !default;              // backgroundColor borderColor fontColor
+// 确认按钮hover样式
+$input-submit-hover-color: #40a9ff #40a9ff #ffffff !default;        // backgroundColor borderColor fontColor
+// 确认按钮active样式
+$input-submit-active-color: #096dd9 #096dd9 #ffffff !default;       // backgroundColor borderColor fontColor
+// 确认按钮disabled样式
+$input-submit-disabled-color: #84b1e2 #84b1e2 #ffffff !default;       // backgroundColor borderColor fontColor
+
+// 文本域限制最低高度
+$input-textrea-minHeight: 32px;
+
+
+.random-input-wrapper{
+    padding: 6px 4px;margin: 0;
+    box-sizing: border-box;
+    color: $input-font-color;
+    list-style: none;
+    position: relative;
+
+    border-collapse: collapse;
+    border-spacing: 0;
+    border: none;
+    
+    display: flex;
+    justify-content: flex-start;
+    align-items: stretch;
+    flex-wrap: nowrap;
+
+    .random-input-disabled{
+        cursor: no-drop;
+        background-color: $input-disabled-backgroundColor;
+        color: $input-disabled-color;
+        &:hover{
+            border-color: $input-disabled-border-color!important;
+        }
+    }
+
+    .random-input-border{
+        border: 1px solid $input-border-color;
+        &:hover{
+            border-color: $input-hover-border-color
+        }
+        &:focus{
+            box-shadow: 0 0 0 2px #1890ff33;
+            border-color: $input-hover-border-color
+        }
+    }
+
+}
+
+.random-input-addon{
+    text-align: center;
+    font-weight: 400;
+    position: relative;
+    transition: all .3s;
+    
+    color: $input-font-color;
+    background-color: $input-addon-backgroundColor;
+    border: 1px solid $input-addon-border-color;
+    border-radius: 3px;
+    
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: nowrap;
+
+    &:first-child{
+        border-right: 0;
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+    &:last-child{
+        border-left: 0;
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+    }
+}
+
+
+.random-input-lg{
+    .random-input,.random-input-addon,.random-input-textarea{
+        padding: $input-lg-padding;
+    }
+    .random-input,.random-input-addon,.random-input-submit,.random-input-textarea{
+        font-size: $input-lg-font-size;
+    }
+}
+.random-input-default{
+    .random-input,.random-input-addon,.random-input-textarea{
+        padding: $input-default-padding;
+    }
+    .random-input,.random-input-addon,.random-input-submit,.random-input-textarea{
+        font-size: $input-default-font-size;
+    }
+}
+.random-input-sm{
+    .random-input,.random-input-addon,.random-input-textarea{
+        padding: $input-sm-padding;
+    }
+    .random-input,.random-input-addon,.random-input-submit,.random-input-textarea{
+        font-size: $input-sm-font-size;
+    }
+}
+
+.random-input{
+    line-height: $input-line-height;
+    background-color: $input-backgroundColor;
+    transition: all .3s;
+    border-radius: 3px;
+    outline: none;
+    border: none;
+    position: relative;
+
+    &:not(:first-child):not(:last-child){
+        border-radius: 0;
+    }
+    &:not(:first-child){
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+    }
+    &:not(:last-child){
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+}
+
+textarea.random-input{
+    min-width: 100%;
+    min-height: $input-textrea-minHeight;
+    transition: all .3s,height 0s;
+}
+
+.random-input-submit{
+    display: inline-flex;
+    align-items: stretch;
+    justify-content: center;
+    flex-wrap: nowrap;
+    button{
+        cursor: pointer;
+        outline: none;
+        box-sizing: border-box;
+        border: 1px solid nth($input-submit-color, 2);
+        border-top-right-radius: 3px;
+        border-bottom-right-radius: 3px;
+        background-color: nth($input-submit-color, 1);
+        color: nth($input-submit-color, 3);
+        transition: all .3s;
+        &:hover{
+            border: 1px solid nth($input-submit-hover-color, 2);
+            background-color: nth($input-submit-hover-color, 1);
+            color: nth($input-submit-hover-color, 3);
+        }
+        &:active{
+            border: 1px solid nth($input-submit-active-color, 2);
+            background-color: nth($input-submit-active-color, 1);
+            color: nth($input-submit-active-color, 3);
+        }
+    }
+}
+.random-input-submit-disabled{
+    button{
+        cursor: no-drop;
+        border: 1px solid nth($input-submit-disabled-color, 2)!important;
+        background-color: nth($input-submit-disabled-color, 1)!important;
+        color: nth($input-submit-disabled-color, 3)!important;
+    }
+}

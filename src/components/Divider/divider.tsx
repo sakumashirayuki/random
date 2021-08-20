@@ -1,5 +1,6 @@
 import React, { FC, CSSProperties } from 'react';
 import classNames from 'classnames';
+import PropTypes from 'prop-types';
 
 // 枚举类型常用于固定范围的常量
 // 分割线样式
@@ -48,6 +49,10 @@ Divider.defaultProps = {
   type: 'soild',
   orientation: 'left',
   plain: false,
+};
+
+Divider.propTypes = {
+  plain: PropTypes.bool,
 };
 
 export default Divider;

@@ -1,0 +1,206 @@
+$switch-sm-width: 44px;
+$switch-sm-height: 22px;
+$switch-sm-lineHeight: 20px;
+$switch-sm-ball-width: 18px;
+$switch-sm-ball-checked-left: 22px;
+$switch-sm-text-left: 24px;
+$switch-sm-text-checked-left: 6px;
+
+$switch-default-width: 52px;
+$switch-default-height: 26px;
+$switch-default-lineHeight: 24px;
+$switch-default-ball-width: 22px;
+$switch-default-ball-checked-left: 26px;
+$switch-default-text-left: 30px;
+$switch-default-text-checked-left: 8px;
+
+$switch-border-color: #ccc;
+$switch-background-color: #ccc;
+$switch-font-color: #ffffff;
+
+$switch-checked-border-color: #1890ff;
+$switch-checked-background-color: #1890ff;
+$switch-checked-font-color: #ffffff;
+
+$switch-disabled-border-color: #ececec;
+$switch-disabled-background-color: #ececec;
+$switch-disabled-font-color: #bbb;
+$switch-disabled-ball-color: #fefefe;
+$switch-disabled-checked-border-color: #7bbfff;
+$switch-disabled-checked-background-color: #7bbfff;
+$switch-disabled-checked-font-color: #ccc;
+$switch-disabled-checked-ball-color: #ccc;
+
+// switch button style
+.random-switch-rc {
+    position: relative;
+    display: inline-block;
+    box-sizing: border-box;
+    padding: 0;
+    vertical-align: middle;
+    border-radius: 100px 100px;
+    border: 1px solid $switch-border-color;
+    background-color: $switch-background-color;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.35, 0, 0.25, 1);
+
+    // default 尺寸
+    width: $switch-default-width;
+    height: $switch-default-height;
+    line-height: $switch-default-lineHeight;
+    .random-switch-rc-inner {
+        left: $switch-default-text-left;
+    }
+    &:after {
+        width: $switch-default-ball-width;
+        height: $switch-default-ball-width;
+    }
+    &.random-switch-rc-checked{
+        &:after {
+            left: $switch-default-ball-checked-left;
+        }
+
+        .random-switch-rc-inner {
+            left: $switch-default-text-checked-left;
+        }
+    }
+
+    // sm 尺寸
+    &.random-switch-sm{
+        width: $switch-sm-width;
+        height: $switch-sm-height;
+        line-height: $switch-sm-lineHeight;
+        .random-switch-rc-inner {
+            left: $switch-sm-text-left;
+        }
+        &:after {
+            width: $switch-sm-ball-width;
+            height: $switch-sm-ball-width;
+        }
+        &.random-switch-rc-checked{
+            &:after {
+                left: $switch-sm-ball-checked-left;
+            }
+
+            .random-switch-rc-inner {
+                left: $switch-sm-text-checked-left;
+            }
+        }
+    }
+
+    // 内置文本
+    .random-switch-rc-inner {
+        color: $switch-font-color;
+        font-size: 12px;
+        position: absolute;
+        left: 30px;
+        top: 0;
+    }
+
+    // checked 状态
+    &.random-switch-rc-checked {
+        border: 1px solid $switch-checked-border-color;
+        background-color: $switch-checked-background-color;
+
+        &:after {
+            left: 26px;
+        }
+
+        .random-switch-rc-inner {
+            color: $switch-checked-font-color;
+            left: 8px;
+        }
+    }
+
+    // disabled 状态
+    &.random-switch-rc-disabled {
+        cursor: no-drop;
+        background: $switch-disabled-background-color;
+        border-color: $switch-disabled-border-color;
+        
+        &.random-switch-rc-checked{
+            background: $switch-disabled-checked-background-color !important;
+            border-color: $switch-disabled-checked-border-color !important;
+            .random-switch-rc-inner {
+                color: $switch-disabled-checked-font-color !important;
+            }
+        }
+
+        .random-switch-rc-inner {
+            color: $switch-disabled-font-color;
+        }
+
+        &:after {
+            background: $switch-disabled-ball-color;
+            animation-name: none;
+            cursor: no-drop;
+        }
+        &:hover:after {
+            transform: scale(1);
+            animation-name: none;
+        }
+
+    }
+    
+    // ball
+    &:after {
+        position: absolute;
+        width: 22px;
+        height: 22px;
+        left: 2px;
+        top: 1px;
+        border-radius: 50% 50%;
+        background-color: #fff;
+        content: " ";
+        cursor: pointer;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26);
+        transform: scale(1);
+        transition: left 0.3s cubic-bezier(0.35, 0, 0.25, 1);
+        animation-timing-function: cubic-bezier(0.35, 0, 0.25, 1);
+        animation-duration: 0.3s;
+        animation-name: rcSwitchOff;
+    }
+    &:hover:after {
+        transform: scale(1.1);
+        animation-name: rcSwitchOn;
+    }
+    &:focus {
+        box-shadow: 0 0 0 2px #d5f1fd;
+        outline: none;
+    }
+
+}
+  
+
+.random-switch-rc-label {
+    display: inline-block;
+    line-height: 20px;
+    font-size: 14px;
+    padding-left: 10px;
+    vertical-align: middle;
+    white-space: normal;
+    pointer-events: none;
+    user-select: text;
+}
+  
+  
+@keyframes rcSwitchOn {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.25);
+    }
+    100% {
+        transform: scale(1.1);
+    }
+}
+@keyframes rcSwitchOff {
+    0% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+  

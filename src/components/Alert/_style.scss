@@ -1,0 +1,159 @@
+$alert-font-color: #000000bb !default;
+$alert-success-color: #27ae60 #dfffedf1 !default;        // borderColor backgroundColor
+$alert-info-color: #2980b9 #d2edff !default;        // borderColor backgroundColor
+$alert-error-color: #c0392b #fcd2ce !default;        // borderColor backgroundColor
+$alert-warning-color: #f39c12 #fff6d1 !default;        // borderColor backgroundColor
+
+$alert-title-size: 17px 16px 15px;          // lg default sm
+$alert-text-size: 14px 13px 12px;           // lg default sm
+
+$alert-icon-size: 22px 20px 18px;
+$alert-close-size: 14px 13px 12px;
+
+$alert-padding: 12px 10px 8px;              // lg default sm
+
+.random-alert{
+    box-sizing: border-box; 
+    
+    margin-bottom: 16px;
+    border: 1px solid nth($alert-success-color,1);
+    background-color: nth($alert-success-color,2);
+    color: $alert-font-color;
+    transition: all .5s ease-in-out;
+    overflow: hidden;
+
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+
+    &.random-alert-default{
+        padding: nth($alert-padding, 2);
+        .random-alert-message{
+            font-size: nth($alert-text-size, 2);
+            line-height: nth($alert-icon-size, 2);
+            &:not(:last-child){
+                font-size: nth($alert-title-size, 2);
+                margin-bottom: 8px;
+            }
+        }
+        .random-alert-description{
+            font-size: nth($alert-text-size, 2);
+        }
+        .random-alert-icon{
+            font-size: nth($alert-icon-size, 2);
+        }
+        .random-alert-close{
+            font-size: nth($alert-close-size, 2);
+        }
+    }
+    &.random-alert-lg{
+        padding: nth($alert-padding, 1);
+        .random-alert-message{
+            font-size: nth($alert-text-size, 1);
+            line-height: nth($alert-icon-size, 1);
+            &:not(:last-child){
+                font-size: nth($alert-title-size, 1);
+                margin-bottom: 10px;
+            }
+        }
+        .random-alert-description{
+            font-size: nth($alert-text-size, 1);
+        }
+        .random-alert-icon{
+            font-size: nth($alert-icon-size, 1);
+        }
+        .random-alert-close{
+            font-size: nth($alert-close-size, 1);
+        }
+    }
+    &.random-alert-sm{
+        padding: nth($alert-padding, 3);
+        .random-alert-message{
+            font-size: nth($alert-text-size, 3);
+            line-height: nth($alert-icon-size, 3);
+            &:not(:last-child){
+                font-size: nth($alert-title-size, 3);
+                margin-bottom: 6px;
+            }
+        }
+        .random-alert-description{
+            font-size: nth($alert-text-size, 3);
+        }
+        .random-alert-icon{
+            font-size: nth($alert-icon-size, 3);
+        }
+        .random-alert-close{
+            font-size: nth($alert-close-size, 3);
+        }
+    }
+
+    &.random-alert-info{
+        border-color: nth($alert-info-color,1);
+        background-color: nth($alert-info-color,2);
+    }
+    &.random-alert-error{
+        border-color: nth($alert-error-color,1);
+        background-color: nth($alert-error-color,2);
+    }
+    &.random-alert-warning{
+        border-color: nth($alert-warning-color,1);
+        background-color: nth($alert-warning-color,2);
+    }
+    
+    &.random-alert-motion-leave {
+        transition: all .5s;
+    }
+    &.random-alert-motion-leave-active {
+        height: 0;
+        opacity: 0;
+        padding-top: 0;
+        padding-bottom: 0;
+        margin-bottom: 0px;
+    }
+}
+.random-alert-content{
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+.random-alert-message{
+    font-weight: 400;
+    word-break:break-all;
+    word-wrap:break-word;
+    &:not(:last-child){
+        font-weight: 500;
+        margin-bottom: 8px;
+    }
+}
+
+.random-alert-description{
+    position: relative;
+    word-break:break-all;
+    word-wrap:break-word;
+}
+
+.random-alert-icon, .random-alert-close{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    span{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+.random-alert-close{
+    padding-left: 12px;
+    button{
+        border: none;
+        background-color: transparent;
+        outline: none;
+        cursor: pointer;
+    }
+}
+.random-alert-icon{
+    padding-right: 8px;
+}
