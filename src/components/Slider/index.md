@@ -15,13 +15,13 @@ import React, { useState } from 'react';
 import { Slider } from 'random';
 
 export default () => {
-  const [inputValue, setInputValue] = useState(0);
+  const [inputValue, setInputValue] = useState(20);
   const onChange = (value) => {
     setInputValue(value);
   };
   return (
     <>
-      <p>{inputValue}</p>
+      <p>当前值： {inputValue}</p>
       <Slider value={inputValue} onChange={onChange} />
     </>
   );
@@ -35,36 +35,21 @@ import React, { useState } from 'react';
 import { Slider } from 'random';
 
 export default () => {
-  const [inputValue, setInputValue] = useState(0);
+  const [step, setStep] = useState(0.1);
+  const [inputValue, setInputValue] = useState(55);
   const onChange = (value) => {
     setInputValue(value);
   };
   return (
     <>
-      <p>
-        <span>step: 0.01</span> 当前值：{inputValue}
-      </p>
-      <Slider value={inputValue} onChange={onChange} step={0.01} />
-    </>
-  );
-};
-```
-
-```tsx
-import React, { useState } from 'react';
-import { Slider } from 'random';
-
-export default () => {
-  const [inputValue, setInputValue] = useState(0);
-  const onChange = (value) => {
-    setInputValue(value);
-  };
-  return (
-    <>
-      <p>
-        <span>step: 10</span> 当前值： {inputValue}
-      </p>
-      <Slider value={inputValue} onChange={onChange} step={10} />
+      <span style={{ marginRight: '1rem' }}>步长</span>
+      <input
+        type="text"
+        value={step}
+        onChange={(e) => setStep(e.target.value)}
+      />
+      <p>当前值： {inputValue}</p>
+      <Slider value={inputValue} onChange={onChange} step={Number(step)} />
     </>
   );
 };

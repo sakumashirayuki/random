@@ -32,5 +32,6 @@ $slider-handle-border-size: 2px!default;
     border-radius: 50%;
     background-color: #fff;
     margin-top: -(($slider-handle-size / 2) - ($slider-rail-height / 2));
+    cursor: grab;
   }
 }

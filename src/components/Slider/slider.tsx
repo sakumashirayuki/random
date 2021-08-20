@@ -33,9 +33,11 @@ export const Slider = (props: SliderProps) => {
       mouseX >= railRect.left &&
       mouseX <= railRect.width + railRect.left
     ) {
-      setTrackLength(
-        stepConvert(((mouseX - railRect.left) / railRect.width) * 100, step),
+      const convertedLength = stepConvert(
+        ((mouseX - railRect.left) / railRect.width) * 100,
+        step,
       );
+      setTrackLength(convertedLength);
     }
   };
 
@@ -47,9 +49,11 @@ export const Slider = (props: SliderProps) => {
   const handleOnClickTrack = (e: any) => {
     const mouseX = e.clientX; // mouse position
     if (railRect.width) {
-      setTrackLength(
-        stepConvert(((mouseX - railRect.left) / railRect.width) * 100, step),
+      const convertedLength = stepConvert(
+        ((mouseX - railRect.left) / railRect.width) * 100,
+        step,
       );
+      setTrackLength(convertedLength);
     }
   };
 
