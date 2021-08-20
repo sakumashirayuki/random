@@ -74,16 +74,11 @@ export const Slider = (props: SliderProps) => {
   const classes = classNames(`${classPrefix}`, className);
 
   return (
-    <div className={classes}>
-      <div
-        className={`${classPrefix}-rail`}
-        ref={rail}
-        onClick={handleOnClickTrack}
-      />
+    <div className={classes} onClick={handleOnClickTrack}>
+      <div className={`${classPrefix}-rail`} ref={rail} />
       <div
         className={`${classPrefix}-track`}
         style={{ width: percentToString(trackLength) }}
-        onClick={handleOnClickTrack}
       />
       <div
         className={`${classPrefix}-handle`}
