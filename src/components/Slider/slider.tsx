@@ -74,18 +74,26 @@ export const Slider: FC<SliderProps> = (props: SliderProps) => {
     }
   }, [trackValue]);
 
+  useEffect(() => {
+    setTrackValue(value);
+    setTrackLength(valueToLength(value, min, max, step));
+  }, [value]);
+
   // 合并类名
   const classes = classNames(`${classPrefix}`, className);
+  const railClasses = classNames(`${classPrefix}-rail`);
+  const trackClasses = classNames(`${classPrefix}-track`);
+  const handleClasses = classNames(`${classPrefix}-handle`);
 
   return (
     <div className={classes} onClick={onChangeLength}>
-      <div className={`${classPrefix}-rail`} ref={rail} />
+      <div className={railClasses} ref={rail} />
       <div
-        className={`${classPrefix}-track`}
+        className={trackClasses}
         style={{ width: percentToString(trackLength) }}
       />
       <div
-        className={`${classPrefix}-handle`}
+        className={handleClasses}
         onMouseDown={onMouseDown}
         onMouseUp={onMouseUp}
         style={{ left: percentToString(trackLength) }}

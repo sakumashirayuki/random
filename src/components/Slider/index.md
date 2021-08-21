@@ -32,7 +32,7 @@ export default () => {
 
 ```tsx
 import React, { useState } from 'react';
-import { Slider, Input } from 'random';
+import { Slider, InputNumber } from 'random';
 
 export default () => {
   const [step, setStep] = useState(0.1);
@@ -49,29 +49,49 @@ export default () => {
           style={{ display: 'flex', alignItems: 'center', marginRight: '1rem' }}
         >
           <span style={{ marginRight: '4px' }}>步长</span>
-          <Input value={String(step)} onChange={(value, e) => setStep(value)} />
+          <InputNumber value={step} onChange={(value) => setStep(value)} />
         </div>
         <div
           style={{ display: 'flex', alignItems: 'center', marginRight: '1rem' }}
         >
           <span style={{ marginRight: '4px' }}>最小值</span>
-          <Input value={String(min)} onChange={(value, e) => setMin(value)} />
+          <InputNumber value={min} onChange={(value) => setMin(value)} />
         </div>
         <div
           style={{ display: 'flex', alignItems: 'center', marginRight: '1rem' }}
         >
           <span style={{ marginRight: '4px' }}>最大值</span>
-          <Input value={String(max)} onChange={(value, e) => setMax(value)} />
+          <InputNumber value={max} onChange={(value) => setMax(value)} />
         </div>
       </div>
       <p>当前值： {inputValue}</p>
       <Slider
         value={inputValue}
         onChange={onChange}
-        step={Number(step)}
-        min={Number(min)}
-        max={Number(max)}
+        step={step}
+        min={min}
+        max={max}
       />
+    </>
+  );
+};
+```
+
+### 与 InputNumber 组件保持同步
+
+```tsx
+import React, { useState } from 'react';
+import { Slider, InputNumber } from 'random';
+
+export default () => {
+  const [inputValue, setInputValue] = useState(20);
+  const onChange = (value) => {
+    setInputValue(value);
+  };
+  return (
+    <>
+      <InputNumber value={inputValue} onChange={onChange} />
+      <Slider value={inputValue} onChange={onChange} />
     </>
   );
 };
