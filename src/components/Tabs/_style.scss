@@ -5,6 +5,7 @@ $tabs-card-padding-x: 1rem !default;
 $tabs-card-padding-y: 0.5rem !default;
 $tabs-font-size: 1rem !default;
 $tabs-theme-color: $primary;
+$tabs-backdround-color: $white;
 $tabs-border-color: $gray-300;
 
 $tabs-menu-item-padding-y-sm: 0.25rem !default;
@@ -33,14 +34,14 @@ $tabs-font-size-lg: 1.25rem !default;
         > .random-tabs-menu-item {
             display: inline-block;
             cursor: pointer;
-            margin-bottom: 2px;
             @include tabs-menu-item-boxing(
                 $tabs-menu-item-padding-y,
                 $tabs-menu-item-padding-x,
                 $tabs-menu-item-margin-x,
                 $tabs-font-size
             );
-            transition: color 0.3s, border 0.1s;
+            border-bottom: 2px solid $tabs-backdround-color;
+            transition: color 0.3s, border-color 0.3s;
         }
         > .random-tabs-menu-item-sm {
             @include tabs-menu-item-boxing(
@@ -59,9 +60,11 @@ $tabs-font-size-lg: 1.25rem !default;
             );
         }
         > :hover {
-            color: $tabs-theme-color;
+            color: rgba($tabs-theme-color, 0.8);
+            border-bottom: 2px solid rgba($tabs-theme-color, 0.6);
         }
         > .active {
+            color: $tabs-theme-color;
             margin-bottom: 0px;
             border-bottom: 2px solid $tabs-theme-color;
         }
