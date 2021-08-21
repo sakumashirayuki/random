@@ -1,5 +1,6 @@
 import classNames from 'classnames';
 import React, { createRef, FC, useEffect, useState } from 'react';
+import { Tooltip } from './Tooltip';
 import {
   lengthToValue,
   percentToString,
@@ -15,6 +16,7 @@ interface SliderProps {
   min?: number;
   max?: number;
   disabled?: boolean;
+  tooltipVisible?: boolean;
 }
 
 // 类名前缀
@@ -29,6 +31,7 @@ export const Slider: FC<SliderProps> = (props: SliderProps) => {
     min = 0,
     max = 100,
     disabled = false,
+    tooltipVisible: showTooltip,
   } = props;
   const rail = createRef<HTMLDivElement>();
   const [railRect, setRailRect] = useState({
@@ -39,10 +42,12 @@ export const Slider: FC<SliderProps> = (props: SliderProps) => {
   const [trackLength, setTrackLength] = useState(
     valueToLength(value, min, max),
   );
+  const [tooltipVisible, setTooltipVisible] = useState(false);
 
   const onMouseDown = () => {
     window.addEventListener('mousemove', onChangeLength);
     window.addEventListener('mouseup', onMouseUp);
+    setTooltipVisible(true);
   };
 
   const onChangeLength = (e: any) => {
@@ -65,6 +70,7 @@ export const Slider: FC<SliderProps> = (props: SliderProps) => {
   const onMouseUp = () => {
     window.removeEventListener('mousemove', onChangeLength);
     window.removeEventListener('mouseup', onMouseUp);
+    setTooltipVisible(false);
   };
 
   useEffect(() => {
@@ -94,18 +100,33 @@ export const Slider: FC<SliderProps> = (props: SliderProps) => {
   const handleClasses = classNames(`${classPrefix}-handle`);
 
   return (
-    <div className={containerClasses} onClick={onChangeLength}>
-      <div className={railClasses} ref={rail} />
-      <div
-        className={trackClasses}
-        style={{ width: percentToString(trackLength) }}
-      />
-      <div
-        className={handleClasses}
-        onMouseDown={onMouseDown}
-        onMouseUp={onMouseUp}
-        style={{ left: percentToString(trackLength) }}
-      />
+    <div style={{ position: 'relative' }}>
+      <div className={containerClasses} onClick={onChangeLength}>
+        <div className={railClasses} ref={rail} />
+        <div
+          className={trackClasses}
+          style={{ width: percentToString(trackLength) }}
+        />
+        <div
+          className={handleClasses}
+          onMouseDown={onMouseDown}
+          onMouseUp={onMouseUp}
+          onMouseEnter={() => setTooltipVisible(true)}
+          onMouseLeave={() => setTooltipVisible(false)}
+          style={{ left: percentToString(trackLength) }}
+        >
+          <Tooltip
+            value={trackValue}
+            visible={
+              showTooltip == undefined
+                ? tooltipVisible
+                : showTooltip
+                ? true
+                : false
+            }
+          />
+        </div>
+      </div>
     </div>
   );
 };
