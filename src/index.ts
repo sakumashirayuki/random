@@ -11,3 +11,6 @@ export { default as Slider } from './components/Slider';
 export { default as Input } from './components/Input';
 export { default as Alert } from './components/Alert';
 export { default as Switch } from './components/Switch';
+export { default as Empty } from './components/Empty';
+export { default as Avatar } from './components/Avatar';
+export { default as Badge } from './components/Badge';
