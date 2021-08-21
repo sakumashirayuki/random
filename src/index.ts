@@ -11,3 +11,4 @@ export { default as Slider } from './components/Slider';
 export { default as Input } from './components/Input';
 export { default as Alert } from './components/Alert';
 export { default as Switch } from './components/Switch';
+export { default as Spin } from './components/Spin';
