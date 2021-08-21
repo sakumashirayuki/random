@@ -44,17 +44,25 @@ export default () => {
   };
   return (
     <>
-      <div>
-        <span style={{ paddingLeft: '4px' }}>步长</span>
-        <Input value={String(step)} onChange={(value, e) => setStep(value)} />
-      </div>
-      <div>
-        <span style={{ paddingLeft: '4px' }}>最小值</span>
-        <Input value={String(min)} onChange={(value, e) => setMin(value)} />
-      </div>
-      <div>
-        <span style={{ paddingLeft: '4px' }}>最大值</span>
-        <Input value={String(max)} onChange={(value, e) => setMax(value)} />
+      <div style={{ display: 'flex' }}>
+        <div
+          style={{ display: 'flex', alignItems: 'center', marginRight: '1rem' }}
+        >
+          <span style={{ marginRight: '4px' }}>步长</span>
+          <Input value={String(step)} onChange={(value, e) => setStep(value)} />
+        </div>
+        <div
+          style={{ display: 'flex', alignItems: 'center', marginRight: '1rem' }}
+        >
+          <span style={{ marginRight: '4px' }}>最小值</span>
+          <Input value={String(min)} onChange={(value, e) => setMin(value)} />
+        </div>
+        <div
+          style={{ display: 'flex', alignItems: 'center', marginRight: '1rem' }}
+        >
+          <span style={{ marginRight: '4px' }}>最大值</span>
+          <Input value={String(max)} onChange={(value, e) => setMax(value)} />
+        </div>
       </div>
       <p>当前值： {inputValue}</p>
       <Slider
@@ -71,10 +79,10 @@ export default () => {
 
 ## API
 
-| 属性     | 说明                                                                       | 类型                    | 默认值 |
-| -------- | -------------------------------------------------------------------------- | ----------------------- | ------ |
-| step     | 步长，取值必须大于 0                                                       | number                  | 1      |
-| value    | 设置当前取值                                                               | number                  | -      |
-| onChange | 当 Slider 的值发生改变时，会触发 onChange 事件，并把改变后的值作为参数传入 | (value: number) => void | -      |
-| max      | 最大值                                                                     | number                  | 100    |
-| min      | 最小值                                                                     | number                  | 0      |
+| 属性     | 说明                                                                       | 类型                                               | 默认值 |
+| -------- | -------------------------------------------------------------------------- | -------------------------------------------------- | ------ |
+| step     | 步长，取值必须大于 0                                                       | <font color=#d35400>number</font>                  | 1      |
+| value    | 设置当前取值                                                               | <font color=#d35400>number</font>                  | -      |
+| onChange | 当 Slider 的值发生改变时，会触发 onChange 事件，并把改变后的值作为参数传入 | <font color=#d35400>(value: number) => void</font> | -      |
+| max      | 最大值                                                                     | <font color=#d35400>number</font>                  | 100    |
+| min      | 最小值                                                                     | <font color=#d35400>number</font>                  | 0      |
