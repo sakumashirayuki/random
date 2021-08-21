@@ -19,7 +19,6 @@ $slider-track-light-blue: #389fff!default;
   }
   
   .random-slider-track{
-    width: 60%;
     height: $slider-rail-height;
     background-color: $slider-track-light-blue;
     position: absolute;
@@ -28,7 +27,6 @@ $slider-track-light-blue: #389fff!default;
   .random-slider-handle{
     box-sizing: inherit;
     position: absolute;
-    left: 60%;
     height: $slider-handle-size;
     width: $slider-handle-size;
     border: solid $slider-handle-border-size $slider-track-light-blue;
@@ -49,4 +47,26 @@ $slider-track-light-blue: #389fff!default;
       border: solid $slider-handle-border-size $blue;
     }
   }
+}
+
+.random-slider-disabled{
+  cursor: not-allowed;
+  
+  .random-slider-track{
+    background-color: $gray-500;
+  }
+  
+  .random-slider-handle{
+    border: solid $slider-handle-border-size $gray-500;
+    cursor: not-allowed;
+  }
+
+  &:hover{
+    .random-slider-track{
+      background-color: $gray-500;
+    }
+    .random-slider-handle{
+      border: solid $slider-handle-border-size $gray-500;
+    }
+  }  
 }

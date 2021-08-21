@@ -12,17 +12,22 @@ nav:
 
 ```tsx
 import React, { useState } from 'react';
-import { Slider } from 'random';
+import { Slider, Switch } from 'random';
 
 export default () => {
   const [inputValue, setInputValue] = useState(20);
+  const [sliderAble, setSliderAble] = useState(true);
   const onChange = (value) => {
     setInputValue(value);
   };
   return (
     <>
       <p>当前值： {inputValue}</p>
-      <Slider value={inputValue} onChange={onChange} />
+      <Slider value={inputValue} onChange={onChange} disabled={!sliderAble} />
+      <div style={{ display: 'flex' }}>
+        <span style={{ marginRight: '1rem' }}>abled</span>
+        <Switch size="sm" checked={sliderAble} onChange={setSliderAble} />
+      </div>
     </>
   );
 };
@@ -44,21 +49,41 @@ export default () => {
   };
   return (
     <>
-      <div style={{ display: 'flex' }}>
+      <div
+        style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
+        }}
+      >
         <div
-          style={{ display: 'flex', alignItems: 'center', marginRight: '1rem' }}
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            marginRight: '1rem',
+            marginBottom: '1rem',
+          }}
         >
           <span style={{ marginRight: '4px' }}>步长</span>
           <InputNumber value={step} onChange={(value) => setStep(value)} />
         </div>
         <div
-          style={{ display: 'flex', alignItems: 'center', marginRight: '1rem' }}
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            marginRight: '1rem',
+            marginBottom: '1rem',
+          }}
         >
           <span style={{ marginRight: '4px' }}>最小值</span>
           <InputNumber value={min} onChange={(value) => setMin(value)} />
         </div>
         <div
-          style={{ display: 'flex', alignItems: 'center', marginRight: '1rem' }}
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            marginRight: '1rem',
+            marginBottom: '1rem',
+          }}
         >
           <span style={{ marginRight: '4px' }}>最大值</span>
           <InputNumber value={max} onChange={(value) => setMax(value)} />
@@ -106,3 +131,4 @@ export default () => {
 | onChange | 当 Slider 的值发生改变时，会触发 onChange 事件，并把改变后的值作为参数传入 | <font color=#d35400>(value: number) => void</font> | -      |
 | max      | 最大值                                                                     | <font color=#d35400>number</font>                  | 100    |
 | min      | 最小值                                                                     | <font color=#d35400>number</font>                  | 0      |
+| disabled | 值为 true 时，滑块为禁用状态                                               | <font color=#d35400>boolean</font>                 | false  |

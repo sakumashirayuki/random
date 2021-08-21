@@ -9,11 +9,12 @@ import {
 
 interface SliderProps {
   className: string;
-  step: number;
-  value: number;
+  step?: number;
+  value?: number;
   onChange?: (value: number) => void;
-  min: number;
-  max: number;
+  min?: number;
+  max?: number;
+  disabled?: boolean;
 }
 
 // 类名前缀
@@ -27,6 +28,7 @@ export const Slider: FC<SliderProps> = (props: SliderProps) => {
     onChange,
     min = 0,
     max = 100,
+    disabled = false,
   } = props;
   const rail = createRef<HTMLDivElement>();
   const [railRect, setRailRect] = useState({
@@ -35,7 +37,7 @@ export const Slider: FC<SliderProps> = (props: SliderProps) => {
   });
   const [trackValue, setTrackValue] = useState(value);
   const [trackLength, setTrackLength] = useState(
-    valueToLength(value, min, max, step),
+    valueToLength(value, min, max),
   );
 
   const onMouseDown = () => {
@@ -44,15 +46,19 @@ export const Slider: FC<SliderProps> = (props: SliderProps) => {
   };
 
   const onChangeLength = (e: any) => {
-    const mouseX = e.clientX; // mouse position
-    if (
-      railRect.width &&
-      mouseX >= railRect.left &&
-      mouseX <= railRect.width + railRect.left
-    ) {
-      const currentLength = ((mouseX - railRect.left) / railRect.width) * 100;
-      setTrackLength(currentLength);
-      setTrackValue(stepConvert(lengthToValue(currentLength, min, max), step));
+    if (!disabled) {
+      const mouseX = e.clientX; // mouse position
+      if (
+        railRect.width &&
+        mouseX >= railRect.left &&
+        mouseX <= railRect.width + railRect.left
+      ) {
+        const currentLength = ((mouseX - railRect.left) / railRect.width) * 100;
+        setTrackLength(currentLength);
+        setTrackValue(
+          stepConvert(lengthToValue(currentLength, min, max), step, min, max),
+        );
+      }
     }
   };
 
@@ -76,17 +82,19 @@ export const Slider: FC<SliderProps> = (props: SliderProps) => {
 
   useEffect(() => {
     setTrackValue(value);
-    setTrackLength(valueToLength(value, min, max, step));
+    setTrackLength(valueToLength(value, min, max));
   }, [value]);
 
   // 合并类名
-  const classes = classNames(`${classPrefix}`, className);
+  const containerClasses = classNames(`${classPrefix}`, className, {
+    [`${classPrefix}-disabled`]: disabled,
+  });
   const railClasses = classNames(`${classPrefix}-rail`);
   const trackClasses = classNames(`${classPrefix}-track`);
   const handleClasses = classNames(`${classPrefix}-handle`);
 
   return (
-    <div className={classes} onClick={onChangeLength}>
+    <div className={containerClasses} onClick={onChangeLength}>
       <div className={railClasses} ref={rail} />
       <div
         className={trackClasses}
