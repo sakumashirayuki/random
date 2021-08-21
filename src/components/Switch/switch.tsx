@@ -7,7 +7,7 @@ import React, {
 } from 'react';
 import classnames from 'classnames';
 import propTypes from 'prop-types';
-import RcSwitch, { SwitchChangeEventHandler } from 'rc-switch';
+import RcSwitch, { SwitchChangeEventHandler } from ' ';
 
 type sizeType = 'default' | 'sm';
 
