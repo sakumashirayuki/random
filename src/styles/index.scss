@@ -9,23 +9,35 @@
 // mixin
 @import 'mixin';
 
-// Button
-@import '../components/Button/style';
-
-// Tabs
-@import '../components/Tabs/style';
-
-// Divider
-@import '../components/Divider/style';
+// Alert
+@import "../components/Alert/style";
 
 // Breadcrumb
 @import "../components/Breadcrumb/style";
 
+// Button
+@import '../components/Button/style';
+
+// Divider
+@import '../components/Divider/style';
+
 // Input
 @import "../components/Input/style";
 
-// Alert
-@import "../components/Alert/style";
+// Slider
+@import '../components/Slider/style';
 
 // Switch
 @import "../components/Switch/style";
+
+// Tag
+@import '../components/Tag/style';
+
+// Tabs
+@import '../components/Tabs/style';
+
+// Timeline
+@import '../components/Timeline/style';
+
+// Message
+@import '../components/Message/style';

@@ -1,0 +1,36 @@
+$slider-padding: 1rem 0!default;
+$slider-rail-height: 4px!default;
+$slider-handle-size: 16px !default;
+$slider-handle-border-size: 2px!default;
+
+.random-slider {
+  box-sizing: border-box;
+  position: relative;
+  padding: $slider-padding;
+
+  .random-slider-rail{
+    height: 4px;
+    width: 100%;
+    position: absolute;
+    background-color: $gray-200;
+  }
+  
+  .random-slider-track{
+    width: 60%;
+    height: $slider-rail-height;
+    background-color: $blue;
+    position: absolute;
+  }
+  
+  .random-slider-handle{
+    box-sizing: inherit;
+    position: absolute;
+    left: 60%;
+    height: $slider-handle-size;
+    width: $slider-handle-size;
+    border: solid $slider-handle-border-size $blue;
+    border-radius: 50%;
+    background-color: #fff;
+    margin-top: -(($slider-handle-size / 2) - ($slider-rail-height / 2));
+  }
+}

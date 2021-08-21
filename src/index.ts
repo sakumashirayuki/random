@@ -8,3 +8,7 @@ export { default as Breadcrumb } from './components/Breadcrumb';
 export { default as Input } from './components/Input';
 export { default as Alert } from './components/Alert';
 export { default as Switch } from './components/Switch';
+export { default as Tag } from './components/Tag';
+export { default as Timeline } from './components/Timeline';
+export { default as Slider } from './components/Slider';
+export { default as Message } from './components/Message';
