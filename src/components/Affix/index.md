@@ -16,9 +16,9 @@ export default () => (
   <div
     style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}
   >
-    <Affix offsetTop={100}>
+    <Affix offset={100}>
       <Button btnType="primary" style={{ margin: '15px' }}>
-        Affix top
+        Affix
       </Button>
     </Affix>
     <div style={{ margin: '15px', width: '60%' }}>
@@ -64,18 +64,12 @@ export default () => (
         orci luctus et ultrices posuere cubilia curae;
       </p>
     </div>
-    <Affix offsetBottom={50}>
-      <Button btnType="primary" style={{ margin: '15px' }}>
-        Affix bottom
-      </Button>
-    </Affix>
   </div>
 );
 ```
 
 ## API
 
-| 属性         | 说明                             | 类型                              | 默认值 |
-| ------------ | -------------------------------- | --------------------------------- | ------ |
-| offsetTop    | 距离窗口顶部达到指定偏移量后触发 | <font color=#d35400>number</font> | -      |
-| offsetBottom | 距离窗口底部达到指定偏移量后触发 | <font color=#d35400>number</font> | -      |
+| 属性   | 说明                             | 类型                              | 默认值 |
+| ------ | -------------------------------- | --------------------------------- | ------ |
+| offset | 距离窗口顶部达到指定偏移量后触发 | <font color=#d35400>number</font> | -      |

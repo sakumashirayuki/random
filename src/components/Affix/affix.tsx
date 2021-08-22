@@ -1,14 +1,13 @@
 import React, { createRef, FC, ReactNode, useEffect } from 'react';
 
 export interface AffixProps {
-  offsetTop?: number;
-  offsetBottom?: number;
+  offset?: number;
   classNames?: string;
   children: ReactNode;
 }
 
 export const Affix: FC<AffixProps> = (props) => {
-  const { offsetTop, offsetBottom, classNames, children } = props;
+  const { offset, classNames, children } = props;
   const oldStyles: {
     position: string;
     top: string;
@@ -34,8 +33,8 @@ export const Affix: FC<AffixProps> = (props) => {
     )
       return;
     const scrollTop = window.scrollY;
-    if (offsetTop !== undefined) {
-      if (distanceToTop - scrollTop < offsetTop) {
+    if (offset !== undefined) {
+      if (distanceToTop - scrollTop < offset) {
         if (element.current && element.current.style.position !== 'fixed') {
           oldStyles.position = element.current.style.position;
           oldStyles.top = element.current.style.top;
@@ -43,40 +42,11 @@ export const Affix: FC<AffixProps> = (props) => {
           oldStyles.width = element.current.style.width;
 
           element.current.style.position = 'fixed';
-          element.current.style.top = offsetTop + 'px';
+          element.current.style.top = offset + 'px';
           element.current.style.width = width + 'px';
         }
       } else {
         // reset style
-        if (element.current) {
-          element.current.style.position = oldStyles.position;
-          element.current.style.top = oldStyles.top;
-          element.current.style.bottom = oldStyles.bottom;
-          element.current.style.width = oldStyles.width;
-        }
-      }
-    }
-    if (offsetBottom !== undefined) {
-      const currentTop = element.current
-        ? window.scrollY + element.current.getBoundingClientRect().top
-        : window.scrollY;
-      if (distanceToBottom <= offsetBottom && currentTop <= distanceToTop) {
-        if (element.current && element.current.style.position !== 'fixed') {
-          console.log('distanceBottom', distanceToBottom);
-          console.log('keep fixed');
-          oldStyles.position = element.current.style.position;
-          oldStyles.top = element.current.style.top;
-          oldStyles.bottom = element.current.style.bottom;
-          oldStyles.width = element.current.style.width;
-
-          element.current.style.position = 'fixed';
-          element.current.style.bottom = offsetBottom + 'px';
-          element.current.style.width = width + 'px';
-        }
-      } else {
-        // reset style
-        console.log('distanceBottom', distanceToBottom);
-        console.log('reset');
         if (element.current) {
           element.current.style.position = oldStyles.position;
           element.current.style.top = oldStyles.top;
