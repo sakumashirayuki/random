@@ -1,14 +1,18 @@
 // 默认样式
+$input-number-margin: 1rem !default;
 $input-number-font-color: #000000d9 !default;
 $input-number-line-height: 1.575 !default;
 $input-number-backgroundColor: #FFFFFF !default;
 $input-number-border-color: #d9d9d9 !default;
+$input-number-default-height: 32px !default;
+$input-number-large-height: 40px !default;
+$input-number-small-height: 24px !default;
 // hover样式
 $input-number-hover-border-color: #40a9ff !default;
 
 .random-input-number{
     width: fit-content;
-    margin: 1rem 0;
+    margin: $input-number-margin;
 }
 
 .random-input-number-border{
@@ -23,9 +27,7 @@ $input-number-hover-border-color: #40a9ff !default;
 }
 
 .random-input-number-wrap{
-    padding: 6px 4px;
-    margin: 0;
-    box-sizing: border-box;
+
     color: $input-number-font-color;
     list-style: none;
     position: relative;
@@ -33,16 +35,30 @@ $input-number-hover-border-color: #40a9ff !default;
     border-collapse: collapse;
     border-spacing: 0;
     border: none;
-
-    width: fit-content;
 }
 
 .random-input-number-input{
+    padding: 0 4px;
+    margin: 0;
+
+    box-sizing: border-box;
+    height: $input-number-default-height;
+    width: fit-content;
+
     line-height: $input-number-line-height;
+
     background-color: $input-number-backgroundColor;
     transition: all .3s;
     border-radius: 3px;
     outline: none;
     border: none;
     position: relative;
+
+    &.random-input-number-input-large{
+        height: $input-number-large-height;
+    }
+
+    &.random-input-number-input-small{
+        height: $input-number-small-height;
+    }
 }

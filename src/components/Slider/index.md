@@ -66,7 +66,10 @@ export default () => {
           }}
         >
           <span style={{ marginRight: '4px' }}>步长</span>
-          <InputNumber value={step} onChange={(value) => setStep(value)} />
+          <InputNumber
+            defaultValue={0.1}
+            onChange={(value) => setStep(value)}
+          />
         </div>
         <div
           style={{
@@ -77,7 +80,7 @@ export default () => {
           }}
         >
           <span style={{ marginRight: '4px' }}>最小值</span>
-          <InputNumber value={min} onChange={(value) => setMin(value)} />
+          <InputNumber defaultValue={0} onChange={(value) => setMin(value)} />
         </div>
         <div
           style={{
@@ -88,7 +91,7 @@ export default () => {
           }}
         >
           <span style={{ marginRight: '4px' }}>最大值</span>
-          <InputNumber value={max} onChange={(value) => setMax(value)} />
+          <InputNumber defaultValue={100} onChange={(value) => setMax(value)} />
         </div>
       </div>
       <p>当前值： {inputValue}</p>
@@ -117,7 +120,7 @@ export default () => {
   };
   return (
     <>
-      <InputNumber value={inputValue} onChange={onChange} />
+      <InputNumber defaultValue={20} onChange={onChange} value={inputValue} />
       <Slider value={inputValue} onChange={onChange} />
     </>
   );
