@@ -1,0 +1,94 @@
+// 默认样式
+$input-number-margin: 1rem !default;
+$input-number-font-color: #000000d9 !default;
+$input-number-line-height: 1.575 !default;
+$input-number-backgroundColor: #FFFFFF !default;
+$input-number-border-color: #d9d9d9 !default;
+$input-number-default-height: 32px !default;
+$input-number-large-height: 40px !default;
+$input-number-small-height: 24px !default;
+// hover样式
+$input-number-hover-border-color: #40a9ff !default;
+// disabled样式
+$input-number-disabled-backgroundColor: #dfdbdb9a !default;
+$input-number-disabled-border-color: #d13a3a81 !default;
+$input-number-disabled-color: #3f3f3f59 !default;
+
+.random-input-number{
+    width: fit-content;
+    margin: $input-number-margin;
+}
+
+.random-input-number-border{
+    border: 1px solid $input-number-border-color;
+    &:hover{
+        border-color: $input-number-hover-border-color
+    }
+    &:focus{
+        box-shadow: 0 0 0 2px #1890ff33;
+        border-color: $input-number-hover-border-color
+    }
+}
+
+.random-input-number-wrap{
+
+    color: $input-number-font-color;
+    list-style: none;
+    position: relative;
+
+    border-collapse: collapse;
+    border-spacing: 0;
+    border: none;
+}
+
+.random-input-number-input{
+    padding: 0 4px;
+    margin: 0;
+
+    box-sizing: border-box;
+    height: $input-number-default-height;
+    width: fit-content;
+
+    line-height: $input-number-line-height;
+
+    background-color: $input-number-backgroundColor;
+    transition: all .3s;
+    border-radius: 3px;
+    outline: none;
+    border: none;
+    position: relative;
+
+    &.random-input-number-input-disabled{
+        cursor: no-drop;
+        background-color: $input-number-disabled-backgroundColor;
+        color: $input-number-disabled-color;
+        &:hover{
+            border-color: $input-number-disabled-border-color!important;
+        }
+    }
+
+    &.random-input-number-input-large{
+        height: $input-number-large-height;
+        &.random-input-number-input-disabled{
+            cursor: no-drop;
+            background-color: $input-number-disabled-backgroundColor;
+            color: $input-number-disabled-color;
+            &:hover{
+                border-color: $input-number-disabled-border-color!important;
+            }
+        }
+    }
+
+    &.random-input-number-input-small{
+        height: $input-number-small-height;
+        &.random-input-number-input-disabled{
+            cursor: no-drop;
+            background-color: $input-number-disabled-backgroundColor;
+            color: $input-number-disabled-color;
+            &:hover{
+                border-color: $input-number-disabled-border-color!important;
+            }
+        }
+    }
+
+}

@@ -1,7 +1,10 @@
+@use "sass:math";
+
 $slider-padding: 1rem 0!default;
 $slider-rail-height: 4px!default;
 $slider-handle-size: 16px !default;
 $slider-handle-border-size: 2px!default;
+$slider-track-light-blue: #389fff!default;
 
 .random-slider {
   box-sizing: border-box;
@@ -9,28 +12,92 @@ $slider-handle-border-size: 2px!default;
   padding: $slider-padding;
 
   .random-slider-rail{
-    height: 4px;
+    height: $slider-rail-height;
     width: 100%;
     position: absolute;
     background-color: $gray-200;
   }
   
   .random-slider-track{
-    width: 60%;
     height: $slider-rail-height;
-    background-color: $blue;
+    background-color: $slider-track-light-blue;
     position: absolute;
   }
   
   .random-slider-handle{
     box-sizing: inherit;
     position: absolute;
-    left: 60%;
     height: $slider-handle-size;
     width: $slider-handle-size;
-    border: solid $slider-handle-border-size $blue;
+    border: solid $slider-handle-border-size $slider-track-light-blue;
     border-radius: 50%;
     background-color: #fff;
-    margin-top: -(($slider-handle-size / 2) - ($slider-rail-height / 2));
+    margin-top: -(math.div($slider-handle-size, 2) - math.div($slider-rail-height, 2));
+    cursor: grab;
+  }
+
+  &:hover{
+    .random-slider-rail{
+      background-color: $gray-400;
+    }
+    .random-slider-track{
+      background-color: $blue;
+    }
+    .random-slider-handle{
+      border: solid $slider-handle-border-size $blue;
+    }
+  }
+}
+
+.random-slider-disabled{
+  cursor: not-allowed;
+  
+  .random-slider-track{
+    background-color: $gray-500;
+  }
+  
+  .random-slider-handle{
+    border: solid $slider-handle-border-size $gray-500;
+    cursor: not-allowed;
+  }
+
+  &:hover{
+    .random-slider-track{
+      background-color: $gray-500;
+    }
+    .random-slider-handle{
+      border: solid $slider-handle-border-size $gray-500;
+    }
+  }  
+}
+
+.tooltip{
+  position: absolute;
+  transform: translateY(calc(-100% - 1rem)) translateX(calc(-50% + 6px));
+
+  opacity: 0;
+
+  width: fit-content;
+  line-height: 1rem;
+
+  padding: 12px 8px;
+  color: #fff;
+  text-align: left;
+  text-decoration: none;
+  word-wrap: break-word;
+  background-color: #000000bf;
+  border-radius: 2px;
+  box-shadow: 0 3px 6px -4px #0000001f, 0 6px 16px #00000014, 0 9px 28px 8px #0000000d;
+  &::after{
+    content: "";
+    position: absolute;
+    top: 100%;
+    right: calc(50% - 8px);
+    border: 8px solid transparent;
+    border-top-color: #000000bf;
+  }
+
+  &.tooltip-visible{
+    opacity: 1;
   }
 }
