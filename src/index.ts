@@ -14,3 +14,4 @@ export { default as Switch } from './components/Switch';
 export { default as Empty } from './components/Empty';
 export { default as Avatar } from './components/Avatar';
 export { default as Badge } from './components/Badge';
+export { default as Dropdown } from './components/Dropdown';

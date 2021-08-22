@@ -31,49 +31,21 @@ export default () => (
 );
 ```
 
-### 不同大小
+### Disabled
 
 ```tsx
 import React from 'react';
 import { Tabs } from 'random';
-import { Button } from 'random';
 
 const { TabsPane } = Tabs;
 
 export default () => (
   <>
-    <h4>Small</h4>
-    <Tabs size="sm">
-      <TabsPane key="key1" tab="tab1">
-        TabsPane 1
-      </TabsPane>
-      <TabsPane key="key2" tab="tab2">
-        TabsPane 2
-      </TabsPane>
-      <TabsPane key="key3" tab="tab3">
-        TabsPane 3
-      </TabsPane>
-    </Tabs>
-
-    <h4>Normal</h4>
     <Tabs>
       <TabsPane key="key1" tab="tab1">
         TabsPane 1
       </TabsPane>
-      <TabsPane key="key2" tab="tab2">
-        TabsPane 2
-      </TabsPane>
-      <TabsPane key="key3" tab="tab3">
-        TabsPane 3
-      </TabsPane>
-    </Tabs>
-
-    <h4>Large</h4>
-    <Tabs size="lg">
-      <TabsPane key="key1" tab="tab1">
-        TabsPane 1
-      </TabsPane>
-      <TabsPane key="key2" tab="tab2">
+      <TabsPane disabled key="key2" tab="tab2">
         TabsPane 2
       </TabsPane>
       <TabsPane key="key3" tab="tab3">
@@ -159,21 +131,49 @@ export default () => (
 );
 ```
 
-### Disabled
+### 不同大小
 
 ```tsx
 import React from 'react';
 import { Tabs } from 'random';
+import { Button } from 'random';
 
 const { TabsPane } = Tabs;
 
 export default () => (
   <>
+    <h4>Small</h4>
+    <Tabs size="sm">
+      <TabsPane key="key1" tab="tab1">
+        TabsPane 1
+      </TabsPane>
+      <TabsPane key="key2" tab="tab2">
+        TabsPane 2
+      </TabsPane>
+      <TabsPane key="key3" tab="tab3">
+        TabsPane 3
+      </TabsPane>
+    </Tabs>
+
+    <h4>Normal</h4>
     <Tabs>
       <TabsPane key="key1" tab="tab1">
         TabsPane 1
       </TabsPane>
-      <TabsPane disabled key="key2" tab="tab2">
+      <TabsPane key="key2" tab="tab2">
+        TabsPane 2
+      </TabsPane>
+      <TabsPane key="key3" tab="tab3">
+        TabsPane 3
+      </TabsPane>
+    </Tabs>
+
+    <h4>Large</h4>
+    <Tabs size="lg">
+      <TabsPane key="key1" tab="tab1">
+        TabsPane 1
+      </TabsPane>
+      <TabsPane key="key2" tab="tab2">
         TabsPane 2
       </TabsPane>
       <TabsPane key="key3" tab="tab3">
