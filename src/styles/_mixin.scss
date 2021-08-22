@@ -52,7 +52,7 @@
 }
 
 @mixin tag-color($color, $alpha) {
-  border-color: $color;
+  border-color: rgba($color: $color, $alpha: 0.5);
   background-color: rgba($color: $color, $alpha: $tag-alpha);
   color: $color;
   > .random-tag-span > a{
