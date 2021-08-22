@@ -7,3 +7,5 @@ export { default as Tabs } from './components/Tabs';
 export { default as Tag } from './components/Tag';
 
 export { default as Timeline } from './components/Timeline';
+
+export { default as Dropdown } from './components/Dropdown';
