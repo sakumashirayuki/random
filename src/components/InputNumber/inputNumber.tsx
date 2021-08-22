@@ -11,6 +11,8 @@ export interface inputNumberProps {
   className?: string;
   value?: number;
   defaultValue?: number;
+  min?: number;
+  max?: number;
   size?: 'large' | 'middle' | 'small';
   bordered?: boolean; // 边框
   disabled?: boolean; // 是否禁用
@@ -26,6 +28,8 @@ export const InputNumber: FC<inputNumberProps> = (props: inputNumberProps) => {
     className = '',
     value,
     defaultValue = 0,
+    min = Number.MIN_SAFE_INTEGER,
+    max = Number.MAX_SAFE_INTEGER,
     onChange,
     bordered = true,
     size = 'middle',
@@ -37,9 +41,12 @@ export const InputNumber: FC<inputNumberProps> = (props: inputNumberProps) => {
   );
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setInputValue(Number(e.target.value));
-    if (onChange) {
-      onChange(Number(e.target.value));
+    const numberValue = Number(e.target.value);
+    if (numberValue <= max && numberValue >= min) {
+      setInputValue(numberValue);
+      if (onChange) {
+        onChange(numberValue);
+      }
     }
   };
 

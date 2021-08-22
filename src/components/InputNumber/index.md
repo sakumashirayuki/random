@@ -30,6 +30,61 @@ export default () => {
 };
 ```
 
+### 限制输入的最小值和最大值
+
+```tsx
+import React, { useState } from 'react';
+import { InputNumber } from 'random';
+
+export default () => {
+  const defaultValue = 1;
+  const [min, setMin] = useState(0);
+  const [max, setMax] = useState(10);
+  return (
+    <>
+      <div
+        style={{
+          display: 'flex',
+          marginLeft: '1rem',
+        }}
+      >
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            marginRight: '1rem',
+            marginBottom: '1rem',
+          }}
+        >
+          <span style={{ marginRight: '4px' }}>最小值</span>
+          <InputNumber
+            defaultValue={0}
+            onChange={(value) => setMin(value)}
+            size="small"
+          />
+        </div>
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            marginRight: '1rem',
+            marginBottom: '1rem',
+          }}
+        >
+          <span style={{ marginRight: '4px' }}>最大值</span>
+          <InputNumber
+            defaultValue={10}
+            onChange={(value) => setMax(value)}
+            size="small"
+          />
+        </div>
+      </div>
+      <InputNumber defaultValue={defaultValue} min={min} max={max} />
+    </>
+  );
+};
+```
+
 ### 无边框
 
 ```tsx
@@ -77,11 +132,13 @@ export default () => {
 
 ## API
 
-| 属性         | 说明       | 类型                                               | 默认值 |
-| ------------ | ---------- | -------------------------------------------------- | ------ |
-| value        | 当前值     | <font color=#d35400>number</font>                  | -      |
-| onChange     | 变化回调   | <font color=#d35400>(value: number) => void</font> | -      |
-| bordered     | 是否有边框 | <font color=#d35400>boolean</font>                 | true   |
-| size         | 输入框大小 | `large` &#124; `middle` &#124; `small `            | -      |
-| defaultValue | 初始值     | <font color=#d35400>number</font>                  | -      |
-| disabled     | 禁用       | <font color=#d35400>boolean</font>                 | false  |
+| 属性         | 说明       | 类型                                               | 默认值                  |
+| ------------ | ---------- | -------------------------------------------------- | ----------------------- |
+| value        | 当前值     | <font color=#d35400>number</font>                  | -                       |
+| onChange     | 变化回调   | <font color=#d35400>(value: number) => void</font> | -                       |
+| bordered     | 是否有边框 | <font color=#d35400>boolean</font>                 | true                    |
+| size         | 输入框大小 | `large` &#124; `middle` &#124; `small `            | -                       |
+| defaultValue | 初始值     | <font color=#d35400>number</font>                  | -                       |
+| disabled     | 禁用       | <font color=#d35400>boolean</font>                 | false                   |
+| min          | 最小值     | <font color=#d35400>number</font>                  | Number.MIN_SAFE_INTEGER |
+| max          | 最大值     | <font color=#d35400>number</font>                  | Number.MAX_SAFE_INTEGER |
