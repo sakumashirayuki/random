@@ -12,19 +12,10 @@ export interface inputNumberProps {
   value?: number;
   defaultValue?: number;
   size?: 'large' | 'middle' | 'small';
-  // addonBefore?: React.ReactNode; // 前面内容
-  // addonAfter?: React.ReactNode; // 后面内容
   bordered?: boolean; // 边框
-  // addonSubmit?: string; // 设置按钮文本
-  // disabled?: boolean; // 是否禁用
-  // placeholder?: string; // 辅助文本
+  disabled?: boolean; // 是否禁用
   style?: CSSProperties; // 行内样式
   onChange?: (value: number) => void;
-  // onPressEnter?: (
-  //   // 点击确定/回车确定 回调
-  //   value: string,
-  //   event?: MouseEvent<HTMLElement> | KeyboardEvent<HTMLInputElement>,
-  // ) => void;
 }
 
 // 类名前缀
@@ -38,6 +29,7 @@ export const InputNumber: FC<inputNumberProps> = (props: inputNumberProps) => {
     onChange,
     bordered = true,
     size = 'middle',
+    disabled = false,
   } = props;
 
   const [inputValue, setInputValue] = useState(
@@ -53,6 +45,7 @@ export const InputNumber: FC<inputNumberProps> = (props: inputNumberProps) => {
 
   const inputClasses = classnames(`${classPrefix}-input`, {
     [`${classPrefix}-input-${size}`]: size,
+    [`${classPrefix}-input-disabled`]: disabled,
   });
   const wrapClasses = classnames(`${classPrefix}-wrap`);
   const containerClasses = classnames(`${classPrefix}`, className, {
@@ -71,6 +64,7 @@ export const InputNumber: FC<inputNumberProps> = (props: inputNumberProps) => {
           className={inputClasses}
           value={inputValue}
           onChange={handleChange}
+          disabled={disabled}
         />
       </div>
     </div>

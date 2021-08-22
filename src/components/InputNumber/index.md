@@ -24,11 +24,7 @@ export default () => {
   };
   return (
     <>
-      <InputNumber
-        defaultValue={defaultValue}
-        onChange={onChange}
-        size="large"
-      />
+      <InputNumber defaultValue={defaultValue} onChange={onChange} />
     </>
   );
 };
@@ -88,3 +84,4 @@ export default () => {
 | bordered     | 是否有边框 | <font color=#d35400>boolean</font>                 | true   |
 | size         | 输入框大小 | `large` &#124; `middle` &#124; `small `            | -      |
 | defaultValue | 初始值     | <font color=#d35400>number</font>                  | -      |
+| disabled     | 禁用       | <font color=#d35400>boolean</font>                 | false  |

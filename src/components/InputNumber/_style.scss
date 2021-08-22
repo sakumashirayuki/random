@@ -9,6 +9,10 @@ $input-number-large-height: 40px !default;
 $input-number-small-height: 24px !default;
 // hover样式
 $input-number-hover-border-color: #40a9ff !default;
+// disabled样式
+$input-number-disabled-backgroundColor: #dfdbdb9a !default;
+$input-number-disabled-border-color: #d13a3a81 !default;
+$input-number-disabled-color: #3f3f3f59 !default;
 
 .random-input-number{
     width: fit-content;
@@ -54,11 +58,37 @@ $input-number-hover-border-color: #40a9ff !default;
     border: none;
     position: relative;
 
+    &.random-input-number-input-disabled{
+        cursor: no-drop;
+        background-color: $input-number-disabled-backgroundColor;
+        color: $input-number-disabled-color;
+        &:hover{
+            border-color: $input-number-disabled-border-color!important;
+        }
+    }
+
     &.random-input-number-input-large{
         height: $input-number-large-height;
+        &.random-input-number-input-disabled{
+            cursor: no-drop;
+            background-color: $input-number-disabled-backgroundColor;
+            color: $input-number-disabled-color;
+            &:hover{
+                border-color: $input-number-disabled-border-color!important;
+            }
+        }
     }
 
     &.random-input-number-input-small{
         height: $input-number-small-height;
+        &.random-input-number-input-disabled{
+            cursor: no-drop;
+            background-color: $input-number-disabled-backgroundColor;
+            color: $input-number-disabled-color;
+            &:hover{
+                border-color: $input-number-disabled-border-color!important;
+            }
+        }
     }
+
 }
