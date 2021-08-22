@@ -9,27 +9,19 @@
 // mixin
 @import 'mixin';
 
+// Alert
+@import '../components/Alert/style';
+
+// Breadcrumb
+@import '../components/Breadcrumb/style';
+
 // Button
 @import '../components/Button/style';
-
-// Tabs
-@import '../components/Tabs/style';
 
 // Divider
 @import '../components/Divider/style';
 
 // Breadcrumb
-@import '../components/Breadcrumb/style';
-
-// Tag
-@import '../components/Tag/style';
-
-// Timeline
-@import '../components/Timeline/style';
-
-// Slider
-@import '../components/Slider/style';
-
 @import '../components/Breadcrumb/style';
 
 // Input
@@ -38,11 +30,20 @@
 // InputNumber
 @import '../components/InputNumber/style';
 
-// Alert
-@import '../components/Alert/style';
+// Slider
+@import '../components/Slider/style';
 
 // Switch
 @import '../components/Switch/style';
+
+// Tag
+@import '../components/Tag/style';
+
+// Tabs
+@import '../components/Tabs/style';
+
+// Timeline
+@import '../components/Timeline/style';
 
 // Empty
 @import '../components/empty/style';
@@ -58,3 +59,6 @@
 
 // Spin
 @import '../components/Spin/style';
+
+// Message
+@import '../components/Message/style';

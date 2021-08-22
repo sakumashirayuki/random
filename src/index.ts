@@ -17,3 +17,4 @@ export { default as Avatar } from './components/Avatar';
 export { default as Badge } from './components/Badge';
 export { default as Spin } from './components/Spin';
 export { default as Dropdown } from './components/Dropdown';
+export { default as Message } from './components/Message';
