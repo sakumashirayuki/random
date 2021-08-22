@@ -69,6 +69,7 @@ export default () => {
           <InputNumber
             defaultValue={0.1}
             onChange={(value) => setStep(value)}
+            min={0}
           />
         </div>
         <div
